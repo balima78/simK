@@ -1,0 +1,31 @@
+Package: simK
+Title: Simulation of Kidney Transplantation Synthetic Data 
+Version: 0.1.0.0
+Authors@R: 
+    person("Bruno", "Lima", , "balima78@gmauil.com", role = c("aut", "cre"),
+           comment = c(ORCID = "0000-0001-9090-4457"))
+Description: Functions to generate simulated data for cadaveric donors and kidney transplant candidates. 
+    Includes HLA typing data previously puiblished [Lima et al, 2013]<ref: https://www.slideshare.net/balima78/lima-2013>.
+    Particularly useful to generate datasets to run in KARS.  
+License: MIT
+Encoding: UTF-8
+Roxygen: list(markdown = TRUE)
+RoxygenNote: 7.1.2
+Depends: 
+    R (>= 3.10)
+LazyData: true
+Suggests:
+    testthat (>= 3.0.0)
+Imports:
+    dplyr,
+    extraDistr,
+    purrr,
+    transplantr,
+    truncnorm
+Config/testthat/edition: 3
+Collate:
+    'clinical.R'
+    'demographic.R'
+    'sim_df.R'
+    'data.R'
+    'simK.R'
