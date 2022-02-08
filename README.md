@@ -4,7 +4,7 @@ able, usable state and is being actively developed.](https://www.repostatus.org/
 
 Functions to procedurally generate synthetic data in R for kidney transplant simulations.
 
-![simk](https://github.com/balima78/simK/blob/main/images/simk.png){width=50%}
+<img src="images/simk.png" height="100" align="right"/>
 
 `simK` allows to generate data with clinical and demographic information for a pool of simulated cadaveric donors and a simulated wait listed candidates for kidney transplantation.
 
@@ -64,3 +64,6 @@ For a given number of rows `n`, a data frame is generated with columns:
   
 defining `n.seed` allows for reproducibility.
 
+### candidates
+
+https://www.odt.nhs.uk/odt-structures-and-standards/odt-hub-programme/kidney-offering-scheme/#:~:text=blood%20group%20match-,Key%20terms,10%20as%20difficult%20to%20match.
