@@ -9,6 +9,6 @@ The simK package provides functions for data simulation of clinical and demograp
 }
 \section{simK functions}{
 
-The simK functions: abo, ages, aGFR, cpra, dial, hla_sample, candidates.df, donors.df
+The \code{simK} main functions: \code{candidates.df}, \code{donors.df}, \code{abs.df}
 }
 
