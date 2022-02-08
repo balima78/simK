@@ -96,3 +96,5 @@ s <- sticker(imgurl, package="simK", p_size=20, p_y = 1.65, p_color = 'black',
              url = 'https://txor.netlify.app/', u_size = 5,
              white_around_sticker = T,
         filename="images/simk.png")
+
+?simK
