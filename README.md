@@ -1,7 +1,7 @@
 # simK
 Functions to procedurally generate synthetic data in R for kidney transplant simulations.
 
-![simk](https://github.com/balima78/simK/blob/main/images/simk.png)
+![simk](https://github.com/balima78/simK/blob/main/images/simk.png){width=50%}
 
 `simK` allows to generate data with clinical and demographic information for a pool of simulated cadaveric donors and a simulated wait listed candidates for kidney transplantation.
 
