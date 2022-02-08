@@ -38,3 +38,25 @@
 #' }
 #' @source \url{https://www.slideshare.net/balima78/lima-2013}
 "D10K"
+
+
+#' A vector with HLA-A.
+#'
+#' A character vector with antigens for HLA-A locus obtained from \code{hla} dataset.
+#'
+#' @format A character vector with length 20.
+"agA"
+
+#' A vector with HLA-B.
+#'
+#' A character vector with antigens for HLA-B locus obtained from \code{hla} dataset.
+#'
+#' @format A character vector with length 34.
+"agB"
+
+#' A vector with HLA-DR.
+#'
+#' A character vector with antigens for HLA-DR locus obtained from \code{hla} dataset.
+#'
+#' @format A character vector with length 13.
+"agDR"

@@ -42,7 +42,7 @@ candidates.df(
 \item{n.seed}{a numeric seed that will be used for random number generation.}
 }
 \value{
-A data frame with HLA typing, blood group and truncated ages for a simulated group of transplant donors.
+A data frame with HLA typing, blood group, truncated ages, time on dialysis (in months), cPRA, Tier, MS and RRI (those last 3, only when uk = TRUE) for a simulated group of transplant candidates.
 }
 \description{
 Returns a data frame for simulated donors clinical and demographic characteristics.

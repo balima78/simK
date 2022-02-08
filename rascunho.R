@@ -50,3 +50,49 @@ toc()
 # continuar a partir da pasta:
 # D:\backup CNH bruno 2020-12-15\_CHN_\Trabalhos\CHN\Allocation 2017-09
 # para criar ficheiro de Acs
+
+vpra(abs = c('A1','A2','B5','DR4'))
+
+abs(cA = c('1','68'), cB = c('8','51'), cDR = c('14','12'),
+    cPRA = 85)
+
+library(tictoc)
+tic()
+abs.df <- candidates.df(n=10, uk=T) %>%
+  # filter(cPRA > 0) %>%
+  # slice(1:10) %>%
+  #as_tribble() %>%
+  rowwise() %>%
+  mutate(Abs = list(abs(cA = c(A1,A2), cB = c(B1,B2), cDR = c(DR1,DR2),
+                   cPRA = cPRA)$Abs))
+toc()
+
+abs.df %>%
+  filter(cPRA > 0)
+
+
+library(tictoc)
+tic()
+candidates <- candidates.df(n=10, uk=T)
+toc() # 5.5''
+
+tic()
+donors <- donors.df(n=10, uk=T)
+toc() # 0.06''
+
+tic()
+abs <- abs.df(candidates = candidates)
+toc() # 4.65''
+
+
+abs %>% View()
+
+library(hexSticker)
+imgurl <- system.file("figures/kidneys.JPG", package="hexSticker")
+s <- sticker(imgurl, package="simK", p_size=20, p_y = 1.65, p_color = 'black',
+             s_x=1, s_y=1, s_width=.6,
+             h_fill = 'white', h_color = 'red', h_size = 3,
+             spotlight = T,
+             url = 'https://txor.netlify.app/', u_size = 5,
+             white_around_sticker = T,
+        filename="images/simk.png")

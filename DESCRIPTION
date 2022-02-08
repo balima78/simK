@@ -17,11 +17,14 @@ LazyData: true
 Suggests:
     testthat (>= 3.0.0)
 Imports:
+    data.table,
     dplyr,
     extraDistr,
     purrr,
+    stats,
     transplantr,
-    truncnorm
+    truncnorm,
+    tidyr
 Config/testthat/edition: 3
 Collate:
     'clinical.R'
@@ -29,3 +32,4 @@ Collate:
     'sim_df.R'
     'data.R'
     'simK.R'
+    'histo.R'

@@ -2,6 +2,8 @@
 
 export(aGFR)
 export(abo)
+export(abs)
+export(abs.df)
 export(ages)
 export(candidates.df)
 export(cpra)
@@ -10,3 +12,4 @@ export(donors.df)
 export(hla_sample)
 export(matchability)
 export(mmHLA)
+export(vpra)
