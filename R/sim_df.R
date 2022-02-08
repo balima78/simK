@@ -53,7 +53,8 @@ donors.df <- function(n = 1000, replace = TRUE,
                                           hdays = hospital_stay),
              DRI = transplantr::ukkdri_q(UKKDRI, prefix = TRUE)
              ) %>%
-      select(ID, bg, A1, A2, B1, B2, DR1, DR2, age, DRI)
+      dplyr::mutate_at(dplyr::vars(tidyselect::ends_with('1'), tidyselect::ends_with('2')), as.character) %>%
+      dplyr::select(ID, bg, A1, A2, B1, B2, DR1, DR2, age, DRI)
   }
 
   return(df)
@@ -73,7 +74,7 @@ donors.df <- function(n = 1000, replace = TRUE,
 #' @param prob.dm A value for the probability of having Diabetes Mellitus
 #' @param uk A logical value, if TRUE is also computed the Donor Risk Index (DRI)
 #' @param n.seed a numeric seed that will be used for random number generation.
-#' @return A data frame with HLA typing, blood group and truncated ages for a simulated group of transplant donors.
+#' @return A data frame with HLA typing, blood group, truncated ages, time on dialysis (in months), cPRA, Tier, MS and RRI (those last 3, only when uk = TRUE) for a simulated group of transplant candidates.
 #' @examples
 #' candidates.df(n = 1000, replace = TRUE, probs = c(0.4658, 0.0343, 0.077, 0.4229), lower=18, upper=75, mean = 55, sd = 15, prob.dm = 0.12, uk = FALSE, n.seed = 3)
 #' @export
@@ -112,19 +113,44 @@ candidates.df <- function(n = 1000, replace = TRUE,
                                                  dm = dm),
                     RRI = transplantr::ukkrri_q(UKKRRI, prefix = T)
                     ) %>%
-      mutate_at(vars(ends_with('1'),ends_with('2')), as.character) %>%
+      dplyr::mutate_at(dplyr::vars(tidyselect::ends_with('1'),tidyselect::ends_with('2')), as.character) %>%
       dplyr::rowwise() %>%
       dplyr::mutate(ms = matchability(cABO = bg, cPRA = cPRA,
                                       cA = c(A1,A2), cB = c(B1,B2), cDR = c(DR1,DR2),
                                       n.seed = n.seed)
              ) %>%
-      ungroup()
-    df$MS <- dplyr::ntile(desc(df$ms), 10)
+      dplyr::ungroup()
+    df$MS <- dplyr::ntile(dplyr::desc(df$ms), 10)
     df <- df %>%
-      dplyr::mutate(TIER = ifelse(MS == 10 | cPRA == 100 | dialysis > 7*12, 'A', 'B'))
+      dplyr::mutate(Tier = ifelse(MS == 10 | cPRA == 100 | dialysis > 7*12, 'A', 'B')) %>%
+      dplyr::select(ID, bg, A1, A2, B1, B2, DR1, DR2, age, dialysis, cPRA, Tier, MS, RRI)
 
 
     }
 
   return(df)
   }
+
+#' A data frame with candidates' HLA antibodies
+#'
+#' @description Returns a data frame with transplant candidates' HLA antibodies obtained according to theirs cPRA values and HLA typing.
+#' @param candidates A dataframe with \{ID}, HLA typing (column names: \code{A1}, \code{A2}, \code{B1}, \code{B2}, \code{DR1}, \code{DR2}) and cPRA value (column name: \code{cPRA}), for a group of transplant candidates.
+#' @param n.seed a numeric seed that will be used for random number generation.
+#' @return A data frame with \{ID} and HLA antibodies \code{Abs}.
+#' @examples
+#' abs.df(candidates = candidates.df(n=10), n.seed = 3)
+#' @export
+abs.df <- function(candidates = candidates.df(n=10), n.seed = 3){
+
+  df <- candidates %>%
+    dplyr::rowwise() %>%
+    dplyr::mutate(Abs = list(abs(cA = c(A1,A2), cB = c(B1,B2), cDR = c(DR1,DR2),
+                                    cPRA = cPRA,
+                                    n.seed = n.seed)$Abs))
+
+  df %>%
+    dplyr::filter(cPRA > 0) %>%
+    dplyr::select(ID, Abs) %>%
+    tidyr::unnest(Abs)
+
+}
