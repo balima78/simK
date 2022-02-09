@@ -144,13 +144,13 @@ abs.df <- function(candidates = candidates.df(n=10), n.seed = 3){
 
   df <- candidates %>%
     dplyr::rowwise() %>%
-    dplyr::mutate(Abs = list(abs(cA = c(A1,A2), cB = c(B1,B2), cDR = c(DR1,DR2),
+    dplyr::mutate(abs = list(abs(cA = c(A1,A2), cB = c(B1,B2), cDR = c(DR1,DR2),
                                     cPRA = cPRA,
                                     n.seed = n.seed)$Abs))
 
   df %>%
     dplyr::filter(cPRA > 0) %>%
-    dplyr::select(ID, Abs) %>%
-    tidyr::unnest(Abs)
+    dplyr::select(ID, abs) %>%
+    tidyr::unnest(abs)
 
 }

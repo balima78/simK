@@ -80,4 +80,4 @@ s <- sticker(imgurl, package="simK", p_size=20, p_y = 1.65, p_color = 'black',
              white_around_sticker = T,
         filename="images/simk.png")
 
-?simK
+?abs.df
