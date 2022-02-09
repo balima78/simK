@@ -24,6 +24,8 @@ hla <- read_csv2("~/2.PhD/HEADS/HLA37993.csv", col_types = 'cdddddddd')
 
 usethis::use_data(D10K)
 
+usethis::use_ccby_license()
+
 # https://rich-iannone.github.io/pointblank/articles/VALID-III.html
 
 set.seed(3)
@@ -51,25 +53,6 @@ toc()
 # D:\backup CNH bruno 2020-12-15\_CHN_\Trabalhos\CHN\Allocation 2017-09
 # para criar ficheiro de Acs
 
-vpra(abs = c('A1','A2','B5','DR4'))
-
-abs(cA = c('1','68'), cB = c('8','51'), cDR = c('14','12'),
-    cPRA = 85)
-
-library(tictoc)
-tic()
-abs.df <- candidates.df(n=10, uk=T) %>%
-  # filter(cPRA > 0) %>%
-  # slice(1:10) %>%
-  #as_tribble() %>%
-  rowwise() %>%
-  mutate(Abs = list(abs(cA = c(A1,A2), cB = c(B1,B2), cDR = c(DR1,DR2),
-                   cPRA = cPRA)$Abs))
-toc()
-
-abs.df %>%
-  filter(cPRA > 0)
-
 
 library(tictoc)
 tic()
@@ -84,8 +67,8 @@ tic()
 abs <- abs.df(candidates = candidates)
 toc() # 4.65''
 
-
-abs %>% View()
+abs.df(candidates = candidates.df(n=10),
+       n.seed = 3)
 
 library(hexSticker)
 imgurl <- system.file("figures/kidneys.JPG", package="hexSticker")

@@ -139,4 +139,4 @@ abs.df(candidates = candidates.df(n=10),
 as inputs, this function requires a data set with an *ID* and patients HLA information (HLA typing and cPRA value) with the same format as provided  by `candidates.df()`. Defining `n.seed` allows for reproducibility.
 
 :warning: 
-All this functions rely on HLA typing at intermediate resolution as described on  [Lima *et al*, 2013](https://www.slideshare.net/balima78/lima-2013).
+All this functions rely on HLA typing at intermediate resolution as described at  [Lima *et al*, 2013](https://www.slideshare.net/balima78/lima-2013).
