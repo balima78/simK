@@ -4,9 +4,9 @@ able, usable state and is being actively developed.](https://www.repostatus.org/
 
 **License**: Creative Commons Attribution [CC-BY](https://creativecommons.org/licenses/by/2.0/). Feel free to share and adapt, but don't forget to credit the author.
 
-Functions to procedurally generate synthetic data in R for kidney transplant simulations.
-
 <img src="images/simk.png" height="150" align="right"/>
+
+Functions to procedurally generate synthetic data in R for kidney transplant simulations.
 
 `simK` allows to generate data with clinical and demographic information for a pool of simulated cadaveric donors and a simulated wait listed candidates for kidney transplantation.
 
@@ -66,7 +66,7 @@ For a given number of rows `n`, a data frame is generated with columns:
   
 defining `n.seed` allows for reproducibility.
 
-:information_source: to compute *DRI* as decribed on `{transplantr}`, we generated variables: *height* ($N(165,20)$); *hypertension* (with probability $0.43$); *sex* (with probability $0.55$ for man); *CMV+* (with probability $0.9$); hospital stay ($P(\lambda = 4)$); and *GFR* by *age* (<30 $N(116, 10)$; 30-39 $N(107, 10)$; 40-49 $N(99, 10)$; 50-59 $N(93, 10)$; 60-69 $N(85, 10)$; >=70 $N(75, 10)$ )   
+:information_source: to compute *DRI* as decribed on `{transplantr}`, we generated variables: *height* ($`N(165,20)`$); *hypertension* (with probability $`0.43`$); *sex* (with probability $`0.55`$ for man); *CMV+* (with probability $`0.9`$); hospital stay ($`P(\lambda = 4)`$); and *GFR* by *age* (<30 $`N(116, 10)`$; 30-39 $`N(107, 10)`$; 40-49 $`N(99, 10)`$; 50-59 $`N(93, 10)`$; 60-69 $`N(85, 10)`$; >=70 $`N(75, 10)`$)   
 
 ### Candidates
 
