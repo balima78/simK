@@ -91,9 +91,9 @@ library(hexSticker)
 imgurl <- system.file("figures/kidneys.JPG", package="hexSticker")
 s <- sticker(imgurl, package="simK", p_size=20, p_y = 1.65, p_color = 'black',
              s_x=1, s_y=1, s_width=.6,
-             h_fill = 'white', h_color = 'red', h_size = 3,
+             h_fill = 'white', h_color = 'red', h_size = 8,
              spotlight = T,
-             url = 'https://txor.netlify.app/', u_size = 5,
+             url = 'https://txor.netlify.app/', u_size = 6,
              white_around_sticker = T,
         filename="images/simk.png")
 

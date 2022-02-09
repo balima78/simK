@@ -134,9 +134,9 @@ candidates.df <- function(n = 1000, replace = TRUE,
 #' A data frame with candidates' HLA antibodies
 #'
 #' @description Returns a data frame with transplant candidates' HLA antibodies obtained according to theirs cPRA values and HLA typing.
-#' @param candidates A dataframe with \{ID}, HLA typing (column names: \code{A1}, \code{A2}, \code{B1}, \code{B2}, \code{DR1}, \code{DR2}) and cPRA value (column name: \code{cPRA}), for a group of transplant candidates.
+#' @param candidates A dataframe with \code{ID}, HLA typing (column names: \code{A1}, \code{A2}, \code{B1}, \code{B2}, \code{DR1}, \code{DR2}) and cPRA value (column name: \code{cPRA}), for a group of transplant candidates.
 #' @param n.seed a numeric seed that will be used for random number generation.
-#' @return A data frame with \{ID} and HLA antibodies \code{Abs}.
+#' @return A data frame with \code{ID} and HLA antibodies \code{Abs}.
 #' @examples
 #' abs.df(candidates = candidates.df(n=10), n.seed = 3)
 #' @export

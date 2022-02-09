@@ -6,8 +6,8 @@ Authors@R:
            comment = c(ORCID = "0000-0001-9090-4457"))
 Description: Functions to generate simulated data for cadaveric donors and kidney transplant candidates. 
     Includes HLA typing data previously puiblished [Lima et al, 2013]<ref: https://www.slideshare.net/balima78/lima-2013>.
-    Particularly useful to generate datasets to run in KARS.  
-License: MIT
+    Particularly useful to generate datasets to run in [KARS](https://balima.shinyapps.io/kars/).  
+License: CC BY 4.0
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
 RoxygenNote: 7.1.2
