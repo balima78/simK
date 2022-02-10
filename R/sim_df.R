@@ -138,19 +138,20 @@ candidates.df <- function(n = 1000, replace = TRUE,
 #' @param n.seed a numeric seed that will be used for random number generation.
 #' @return A data frame with \code{ID} and HLA antibodies \code{Abs}.
 #' @examples
-#' abs.df(candidates = candidates.df(n=10), n.seed = 3)
+#' Abs.df(candidates = candidates.df(n=10), n.seed = 3)
 #' @export
-abs.df <- function(candidates = candidates.df(n=10), n.seed = 3){
+Abs.df <- function(candidates = candidates.df(n=10), n.seed = 3){
 
   df <- candidates %>%
     dplyr::rowwise() %>%
-    dplyr::mutate(abs = list(Abs(cA = c(A1,A2), cB = c(B1,B2), cDR = c(DR1,DR2),
+    dplyr::mutate(Abs = list(antbs(cA = c(A1,A2), cB = c(B1,B2), cDR = c(DR1,DR2),
                                     cPRA = cPRA,
-                                    n.seed = n.seed)$Abs))
+                                    n.seed = n.seed)$Abs)) %>%
+    dplyr::ungroup()
 
   df %>%
     dplyr::filter(cPRA > 0) %>%
-    dplyr::select(ID, abs) %>%
-    tidyr::unnest(abs)
+    dplyr::select(ID, Abs) %>%
+    tidyr::unnest(Abs)
 
 }

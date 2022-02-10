@@ -64,7 +64,7 @@ donors <- donors.df(n=10, uk=T)
 toc() # 0.06''
 
 tic()
-abs <- abs.df(candidates = candidates)
+abs <- Abs.df(candidates = candidates)
 toc() # 4.65''
 
 abs.df(candidates = candidates.df(n=10),

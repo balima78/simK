@@ -12,9 +12,7 @@ able, usable state and is being actively developed.](https://www.repostatus.org/
 
 Data generated with `simK` are particularly useful on [KARS](https://balima.shinyapps.io/kars/).
 
-:warning: 
-This package is not a medical device and **should not be used for making clinical decisions**.
-:warning: 
+> :warning: This package is not a medical device and <ins>should not be used for making clinical decisions</ins>. :warning: 
 
 ## Instalation
 
