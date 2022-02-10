@@ -67,7 +67,7 @@ tic()
 abs <- Abs.df(candidates = candidates)
 toc() # 4.65''
 
-abs.df(candidates = candidates.df(n=10),
+Abs.df(candidates = candidates.df(n=10),
        n.seed = 3)
 
 library(hexSticker)
@@ -81,3 +81,7 @@ s <- sticker(imgurl, package="simK", p_size=20, p_y = 1.65, p_color = 'black',
         filename="images/simk.png")
 
 ?abs.df
+
+cpra(10) %>% sample()
+
+abo(n=10)

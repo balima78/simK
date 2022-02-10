@@ -70,7 +70,7 @@ For a given number of rows `n`, a data frame is generated with columns:
   
 defining `n.seed` allows for reproducibility.
 
-:information_source: to compute *DRI* as decribed on `{transplantr}`, we generated variables: *height* (N(165,20)); *hypertension* (with probability 0.43); *sex* (with probability 0.55 for man); *CMV+* (with probability 0.9); hospital stay (P(ld = 4)); and *GFR* by *age* (<30 N(116,10); 30-39 N(107,10); 40-49 N(99,10); 50-59 N(93,10); 60-69 N(85, 10); >=70  N(75, 10)) 
+:information_source: to compute *DRI* as decribed on `{transplantr}`, we generated variables: *height* (N(165,20)); *hypertension* (with probability 0.43); *sex* (with probability 0.55 for man); *CMV+* (with probability 0.9); hospital stay (P(ld = 4)); and [*GFR* by *age*](https://www.kidney.org/atoz/content/gfr) (<30 N(116,10); 30-39 N(107,10); 40-49 N(99,10); 50-59 N(93,10); 60-69 N(85, 10); >=70  N(75, 10)) 
 
 ### Candidates
 

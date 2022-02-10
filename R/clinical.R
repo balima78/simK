@@ -85,7 +85,7 @@ cpra <- function(n = 100, probs = c(0.7, 0.1, 0.1, 0.1)){
 
   v <- c(v1,v2,v3,v4)
 
-  return(v)
+  return(sample(v))
 }
 
 #' Gives time on dialysis in months
