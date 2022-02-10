@@ -12,7 +12,7 @@ able, usable state and is being actively developed.](https://www.repostatus.org/
 
 Data generated with `simK` are particularly useful on [KARS](https://balima.shinyapps.io/kars/).
 
-> :warning: This package is not a medical device and <ins>should not be used for making clinical decisions</ins>. :warning: 
+> :warning: This package is not a medical device and <ins>should not be used for making clinical decisions</ins>.
 
 ## Instalation
 
@@ -118,14 +118,14 @@ defining `n.seed` allows for reproducibility.
 
 ### HLA antibodies
 
-the function `abs.df()` allows to generate a data frame with HLA antibodies from a candidates waiting list:
+the function `Abs.df()` allows to generate a data frame with HLA antibodies from a candidates waiting list:
 
 ```
-abs.df(candidates = candidates.df(n=10), 
+Abs.df(candidates = candidates.df(n=10), 
        n.seed = 3)
        
 # A tibble: 41 x 2
-   ID    abs  
+   ID    Abs  
    <chr> <chr>
  1 K8    A25  
  2 K8    DR16 
@@ -143,5 +143,5 @@ abs.df(candidates = candidates.df(n=10),
 as inputs, this function requires a data set with an *ID* and patients HLA information (HLA typing and cPRA value) with the same format as provided  by `candidates.df()`. Defining `n.seed` allows for reproducibility.
 
 :warning: 
-All this functions rely on HLA typing at intermediate resolution as described at  [Lima *et al*, 2013](https://www.slideshare.net/balima78/lima-2013).
+All these functions rely on HLA typing at intermediate resolution as described at  [Lima *et al*, 2013](https://www.slideshare.net/balima78/lima-2013).
 :warning:
