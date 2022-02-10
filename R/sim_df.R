@@ -142,6 +142,8 @@ candidates.df <- function(n = 1000, replace = TRUE,
 #' @export
 Abs.df <- function(candidates = candidates.df(n=10), n.seed = 3){
 
+  require("magrittr")
+
   df <- candidates %>%
     dplyr::rowwise() %>%
     dplyr::mutate(Abs = list(antbs(cA = c(A1,A2), cB = c(B1,B2), cDR = c(DR1,DR2),
