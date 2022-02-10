@@ -38,12 +38,12 @@ library(simK)
 # you must run also tidyverse
 library(tidyverse)
 
-donors.df(n = 10, 
+donors_df(n = 10, 
           replace = TRUE, 
           probs = c(0.4658, 0.0343, 0.077, 0.4229), 
           lower = 18, upper = 75, mean = 55, sd = 15, 
           uk = FALSE, 
-          n.seed = 3)
+          n_seed = 3)
           
 # A tibble: 10 x 10
    ID    bg    A1    A2    B1    B2    DR1   DR2     age DRI  
@@ -77,28 +77,28 @@ defining `n.seed` allows for reproducibility.
 A simulated waiting list for kidney transplant candidates, can be generated with `candidates.df()`:
 
 ```
-candidates.df(n = 10, 
+candidates_df(n = 10, 
               replace = TRUE,
-              probs.abo = c(0.43, 0.03, 0.08, 0.46),
-              probs.cpra = c(0.7, 0.1, 0.1, 0.1),
-              lower=18, upper=75, mean = 45, sd = 15,
-              prob.dm = 0.12,
+              probs_abo = c(0.43, 0.03, 0.08, 0.46),
+              probs_cpra = c(0.7, 0.1, 0.1, 0.1),
+              lower = 18, upper = 75, mean = 45, sd = 15,
+              prob_dm = 0.12,
               uk = TRUE,
-              n.seed = 3)
+              n_seed = 3)
               
 # A tibble: 10 x 14
    ID    bg    A1    A2    B1    B2    DR1   DR2     age dialysis  cPRA Tier     MS RRI  
    <chr> <chr> <chr> <chr> <chr> <chr> <chr> <chr> <dbl>    <dbl> <dbl> <chr> <int> <chr>
- 1 K1    A     1     29    8     44    11    7        58       49     0 B         1 R3   
- 2 K2    O     2     3     7     57    4     8        33       72     0 B         7 R2   
- 3 K3    A     11    33    14    35    1     13       65       15     0 B         2 R3   
- 4 K4    O     24    30    49    58    11    11       34       78     0 B         8 R2   
- 5 K5    O     2     3     7     51    1     13       36       90     0 A         3 R2   
- 6 K6    A     30    68    15    18    3     4        21       35     0 B         4 R4   
- 7 K7    O     3     26    18    40    11    13       26       58     0 B         5 R1   
- 8 K8    A     1     1     7     8     3     13       37       54    21 B         6 R2   
- 9 K9    O     3     3     7     44    15    8        47       60    60 B         9 R3   
-10 K10   O     11    29    44    57    7     7        25       94    90 A        10 R4   
+ 1 K1    A     1     29    8     44    11    7        36       49     0 B         1 R2   
+ 2 K2    O     2     3     7     57    4     8        21       22     0 B         7 R4   
+ 3 K3    A     11    33    14    35    1     13       26       55    21 B         2 R1   
+ 4 K4    O     24    30    49    58    11    11       37       98     0 A         8 R2   
+ 5 K5    O     2     3     7     51    1     13       47       89     0 A         3 R3   
+ 6 K6    A     30    68    15    18    3     4        25       22     0 B         4 R4   
+ 7 K7    O     3     26    18    40    11    13       56       79     0 B         5 R4   
+ 8 K8    A     1     1     7     8     3     13       72       81    90 A        10 R4   
+ 9 K9    O     3     3     7     44    15    8        47       65    60 B         9 R3   
+10 K10   O     11    29    44    57    7     7        30       42     0 B         6 R1    
               
 ```
 
@@ -121,23 +121,23 @@ defining `n.seed` allows for reproducibility.
 the function `Abs.df()` allows to generate a data frame with HLA antibodies from a candidates waiting list:
 
 ```
-Abs.df(candidates = candidates.df(n=10), 
-       n.seed = 3)
+Abs_df(candidates = candidates_df(n=10), 
+       n_seed = 3)
        
-# A tibble: 41 x 2
+# A tibble: 49 x 2
    ID    Abs  
    <chr> <chr>
- 1 K8    A25  
- 2 K8    DR16 
- 3 K8    A33  
- 4 K8    B51  
- 5 K9    A24  
- 6 K9    DR16 
- 7 K9    A33  
- 8 K9    B52  
- 9 K9    B49  
-10 K9    DR16 
-# ... with 31 more rows
+ 1 K3    A25  
+ 2 K3    DR4  
+ 3 K8    A25  
+ 4 K8    DR16 
+ 5 K8    A33  
+ 6 K8    B51  
+ 7 K8    B48  
+ 8 K8    DR16 
+ 9 K8    B52  
+10 K8    B55  
+# ... with 39 more rows
 ```
 
 as inputs, this function requires a data set with an *ID* and patients HLA information (HLA typing and cPRA value) with the same format as provided  by `candidates.df()`. Defining `n.seed` allows for reproducibility.

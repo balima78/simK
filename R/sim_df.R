@@ -9,19 +9,21 @@
 #' @param mean A value for mean's distribution.
 #' @param sd A value for standar deviation's distribution.
 #' @param uk A logical value, if TRUE is also computed the Donor Risk Index (DRI)
-#' @param n.seed a numeric seed that will be used for random number generation.
+#' @param n_seed a numeric seed that will be used for random number generation.
 #' @return A data frame with HLA typing, blood group and truncated ages for a simulated group of transplant donors.
 #' @examples
-#' donors.df(n = 1000, replace = TRUE, probs = c(0.4658, 0.0343, 0.077, 0.4229), lower=18, upper=75, mean = 55, sd = 15, uk = FALSE, n.seed = 3)
+#' donors_df(n = 10, replace = TRUE, probs = c(0.4658, 0.0343, 0.077, 0.4229), lower=18, upper=75, mean = 55, sd = 15, uk = FALSE, n_seed = 3)
 #' @export
-donors.df <- function(n = 1000, replace = TRUE,
+donors_df <- function(n = 10, replace = TRUE,
                       probs = c(0.4658, 0.0343, 0.077, 0.4229),
                       lower=18, upper=75,
                       mean = 60, sd = 12,
                       uk = FALSE,
-                      n.seed = 3){
+                      n_seed = 3){
 
-  set.seed(n.seed)
+  require(magrittr)
+
+  set.seed(n_seed)
 
   df <- hla_sample(n = n, replace = replace)
   df$bg <- abo(n = n, probs = probs)
@@ -65,33 +67,35 @@ donors.df <- function(n = 1000, replace = TRUE,
 #' @description Returns a data frame for simulated donors clinical and demographic characteristics.
 #' @param n An integer to define the number of rows
 #' @param replace A logical value for sampling with replacement
-#' @param probs.abo A vector with the probabilities for blood group A, AB, B and O (in this order). The sum of the probabilities must be equal to one.
-#' @param probs.cpra A vector with the probabilities for cPRA groups 0%, 1%-50%, 51%-84%, 85%-100% (in this order). The sum of the probabilities must be equal to one.
+#' @param probs_abo A vector with the probabilities for blood group A, AB, B and O (in this order). The sum of the probabilities must be equal to one.
+#' @param probs_cpra A vector with the probabilities for cPRA groups 0%, 1%-50%, 51%-84%, 85%-100% (in this order). The sum of the probabilities must be equal to one.
 #' @param lower An integer for ages' lower limit.
 #' @param upper An integer for ages' upper limit.
 #' @param mean A value for mean age's distribution.
 #' @param sd A value for standard deviation age's distribution.
-#' @param prob.dm A value for the probability of having Diabetes Mellitus
+#' @param prob_dm A value for the probability of having Diabetes Mellitus
 #' @param uk A logical value, if TRUE is also computed the Donor Risk Index (DRI)
-#' @param n.seed a numeric seed that will be used for random number generation.
+#' @param n_seed a numeric seed that will be used for random number generation.
 #' @return A data frame with HLA typing, blood group, truncated ages, time on dialysis (in months), cPRA, Tier, MS and RRI (those last 3, only when uk = TRUE) for a simulated group of transplant candidates.
 #' @examples
-#' candidates.df(n = 1000, replace = TRUE, probs = c(0.4658, 0.0343, 0.077, 0.4229), lower=18, upper=75, mean = 55, sd = 15, prob.dm = 0.12, uk = FALSE, n.seed = 3)
+#' candidates_df(n = 10, replace = TRUE, probs_abo = c(0.43, 0.03, 0.08, 0.46), probs_cpra = c(0.7, 0.1, 0.1, 0.1), lower=18, upper=75, mean = 45, sd = 15, prob_dm = 0.12, uk = FALSE, n_seed = 3)
 #' @export
-candidates.df <- function(n = 1000, replace = TRUE,
-                          probs.abo = c(0.43, 0.03, 0.08, 0.46),
-                          probs.cpra = c(0.7, 0.1, 0.1, 0.1),
+candidates_df <- function(n = 10, replace = TRUE,
+                          probs_abo = c(0.43, 0.03, 0.08, 0.46),
+                          probs_cpra = c(0.7, 0.1, 0.1, 0.1),
                           lower=18, upper=75,
                           mean = 45, sd = 15,
-                          prob.dm = 0.12,
+                          prob_dm = 0.12,
                           uk = FALSE,
-                          n.seed = 3){
+                          n_seed = 3){
 
-  set.seed(n.seed)
+  require(magrittr)
+
+  set.seed(n_seed)
 
   df <- hla_sample(n = n, replace = replace)
-  df$bg <- abo(n = n, probs = probs.abo)
-  df$cPRA <- cpra(n = n, probs = probs.cpra)
+  df$bg <- abo(n = n, probs = probs_abo)
+  df$cPRA <- cpra(n = n, probs = probs_cpra)
   df$age <- ages(n = n, lower=lower, upper=upper, mean = mean, sd = sd)
   df$ID <- paste0('K', 1:n)
 
@@ -103,8 +107,8 @@ candidates.df <- function(n = 1000, replace = TRUE,
                                       .y = hiper,
                                       ~dial(hiper = .y, bg = .x)))
   if(uk == TRUE){
-    dm1 <- prob.dm
-    dm0 <- 1-prob.dm
+    dm1 <- prob_dm
+    dm0 <- 1-prob_dm
     df$dm <- sample(c(0,1), size = n, replace = TRUE, prob = c(dm0,dm1))
     df<-df %>%
       dplyr::mutate(UKKRRI = transplantr::ukkrri(age = age,
@@ -117,7 +121,7 @@ candidates.df <- function(n = 1000, replace = TRUE,
       dplyr::rowwise() %>%
       dplyr::mutate(ms = matchability(cABO = bg, cPRA = cPRA,
                                       cA = c(A1,A2), cB = c(B1,B2), cDR = c(DR1,DR2),
-                                      n.seed = n.seed)
+                                      n_seed = n_seed)
              ) %>%
       dplyr::ungroup()
     df$MS <- dplyr::ntile(dplyr::desc(df$ms), 10)
@@ -135,12 +139,12 @@ candidates.df <- function(n = 1000, replace = TRUE,
 #'
 #' @description Returns a data frame with transplant candidates' HLA antibodies obtained according to theirs cPRA values and HLA typing.
 #' @param candidates A dataframe with \code{ID}, HLA typing (column names: \code{A1}, \code{A2}, \code{B1}, \code{B2}, \code{DR1}, \code{DR2}) and cPRA value (column name: \code{cPRA}), for a group of transplant candidates.
-#' @param n.seed a numeric seed that will be used for random number generation.
+#' @param n_seed a numeric seed that will be used for random number generation.
 #' @return A data frame with \code{ID} and HLA antibodies \code{Abs}.
 #' @examples
-#' Abs.df(candidates = candidates.df(n=10), n.seed = 3)
+#' Abs_df(candidates = candidates_df(n=10), n_seed = 3)
 #' @export
-Abs.df <- function(candidates = candidates.df(n=10), n.seed = 3){
+Abs_df <- function(candidates = candidates_df(n=10), n_seed = 3){
 
   require("magrittr")
 
@@ -148,7 +152,7 @@ Abs.df <- function(candidates = candidates.df(n=10), n.seed = 3){
     dplyr::rowwise() %>%
     dplyr::mutate(Abs = list(antbs(cA = c(A1,A2), cB = c(B1,B2), cDR = c(DR1,DR2),
                                     cPRA = cPRA,
-                                    n.seed = n.seed)$Abs)) %>%
+                                    n_seed = n_seed)$Abs)) %>%
     dplyr::ungroup()
 
   df %>%

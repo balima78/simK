@@ -9,7 +9,7 @@ antbs(
   cB = c("7", "15"),
   cDR = c("4", "7"),
   cPRA = 85,
-  n.seed = 3
+  n_seed = 3
 )
 }
 \arguments{
@@ -21,7 +21,7 @@ antbs(
 
 \item{cPRA}{candidate's cPRA value}
 
-\item{n.seed}{a numeric seed that will be used for random number generation.}
+\item{n_seed}{a numeric seed that will be used for random number generation.}
 }
 \value{
 a character vector with HLA abs.
@@ -30,5 +30,5 @@ a character vector with HLA abs.
 creates a sample of HLA antibodies (abs) for a given candidate according with a cPRA value.
 }
 \examples{
-antbs(cA = c('2','29'), cB = c('7','15'), cDR = c('4','7'), cPRA = 85, n.seed = 3)
+antbs(cA = c('2','29'), cB = c('7','15'), cDR = c('4','7'), cPRA = 85, n_seed = 3)
 }

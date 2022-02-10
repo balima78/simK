@@ -1,6 +1,6 @@
 Package: simK
 Title: Simulation of Kidney Transplantation Synthetic Data 
-Version: 0.1.0.0
+Version: 0.1.1
 Authors@R: 
     person("Bruno", "Lima", , "balima78@gmauil.com", role = c("aut", "cre"),
            comment = c(ORCID = "0000-0001-9090-4457"))

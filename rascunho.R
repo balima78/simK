@@ -26,6 +26,8 @@ usethis::use_data(D10K)
 
 usethis::use_ccby_license()
 
+usethis::use_news_md(open = rlang::is_interactive())
+
 # https://rich-iannone.github.io/pointblank/articles/VALID-III.html
 
 set.seed(3)
@@ -80,8 +82,16 @@ s <- sticker(imgurl, package="simK", p_size=20, p_y = 1.65, p_color = 'black',
              white_around_sticker = T,
         filename="images/simk.png")
 
-?abs.df
+candidates_df(n = 10,
+              replace = TRUE,
+              probs_abo = c(0.43, 0.03, 0.08, 0.46),
+              probs_cpra = c(0.7, 0.1, 0.1, 0.1),
+              lower = 18, upper = 75, mean = 45, sd = 15,
+              prob_dm = 0.12,
+              uk = TRUE,
+              n_seed = 3)
 
-cpra(10) %>% sample()
 
-abo(n=10)
+Abs_df(candidates = candidates_df(n=10),
+       n_seed = 3)
+

@@ -10,7 +10,7 @@ matchability(
   cA = c("2", "29"),
   cB = c("7", "15"),
   cDR = c("4", "7"),
-  n.seed = 3
+  n_seed = 3
 )
 }
 \arguments{
@@ -24,7 +24,7 @@ matchability(
 
 \item{cDR}{candidate's HLA-DR typing}
 
-\item{n.seed}{a numeric seed that will be used for random number generation.}
+\item{n_seed}{a numeric seed that will be used for random number generation.}
 }
 \value{
 Match Score measure of how difficult it is to match a patient with a organ donor. A score from 1 (easy to match) to 10 (difficult to match).
@@ -33,5 +33,5 @@ Match Score measure of how difficult it is to match a patient with a organ donor
 Computes the number donors on dataset D10K that are a match to a given transplant candidate. A sample of D10K is selected according to cPRA value, and donors ABO identical and HLA mismatch level 1 or 2 (0 DR or (1 DR and 0 B)) are filtered.
 }
 \examples{
-matchability(dA = c('1','2'), dB = c('5','7'), dDR = c('1','4'), cA = c('1','2'), cB = c('03','15'), cDR = c('04','07'))
+matchability(cABO = 'A', cPRA = 85, cA = c('2','29'), cB = c('7','15'), cDR = c('4','7'), n_seed = 3)
 }
