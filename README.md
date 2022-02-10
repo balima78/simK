@@ -31,7 +31,7 @@ This package has 3 main functions, with them we can generate simulated data for 
 
 ### Donors
 
-A data frame with information for a pool of simulated donors can be generated with the function `donors.df()`:
+A data frame with information for a pool of simulated donors can be generated with the function `donors_df()`:
 
 ```
 library(simK)
@@ -68,13 +68,13 @@ For a given number of rows `n`, a data frame is generated with columns:
   + *age* generated from a Normal distribution with `mean` and `sd` given by the user, values truncated by `lower` and `upper` boundaries;
   + *DRI* when option `uk = TRUE`, Donor Risk Index is copmputed as described by [transplantr](https://transplantr.txtools.net/articles/kidney_risk_scores.html) 
   
-defining `n.seed` allows for reproducibility.
+defining `n_._seed` allows for reproducibility.
 
 :information_source: to compute *DRI* as decribed on `{transplantr}`, we generated variables: *height* (N(165,20)); *hypertension* (with probability 0.43); *sex* (with probability 0.55 for man); *CMV+* (with probability 0.9); hospital stay (P(ld = 4)); and [*GFR* by *age*](https://www.kidney.org/atoz/content/gfr) (<30 N(116,10); 30-39 N(107,10); 40-49 N(99,10); 50-59 N(93,10); 60-69 N(85, 10); >=70  N(75, 10)) 
 
 ### Candidates
 
-A simulated waiting list for kidney transplant candidates, can be generated with `candidates.df()`:
+A simulated waiting list for kidney transplant candidates, can be generated with `candidates_df()`:
 
 ```
 candidates_df(n = 10, 
@@ -105,20 +105,20 @@ candidates_df(n = 10,
 For a given number of `n` rows, a data frame is generated with columns: 
 
   + *ID* unique identifier with the prefix 'K'; 
-  + *bg* with the blood group generated from the parameter `probs.abo` a vector with the probabilities for groups A, AB, B and O, respectively (here by default, we assumed group O patients are more frequent); 
+  + *bg* with the blood group generated from the parameter `probs_abo` a vector with the probabilities for groups A, AB, B and O, respectively (here by default, we assumed group O patients are more frequent); 
   + *A1*, *A2*, *B1*, *B2*, *DR1*, *DR2* HLA typing obtained from HLA allelic and haplotipic frequencies previously published by [Lima *et al*, 2013](https://www.slideshare.net/balima78/lima-2013) (with `replace = TRUE` we can generate a data frame without limitations on the number of rows);
   + *age* generated from a Normal distribution with `mean` and `sd` given by the user, values truncated by `lower` and `upper` boundaries;
   + *dialysis* time on dialysis **in months**, values computed according to patients' blood group and hypersensitation status (cPRA > 85%): for patients with blood group O **and** Hypersinsitized time on dialysis obtained from N(85, 20); for those patients blood O **or** Hypersinsitized N(70,20); remaing patients have time on dialysis obtained from N(35,20);
-  + *cPRA* patients are classified in groups with probabilities given by `probs.cpra` for 0%, 1%-50%, 51%-85% and 86%-100%, respectively. Within the groups > 0%, cPRA are computed as random values from distributions P(ld = 30), P(ld = 70) and P(lb = 90);
+  + *cPRA* patients are classified in groups with probabilities given by `probs_cpra` for 0%, 1%-50%, 51%-85% and 86%-100%, respectively. Within the groups > 0%, cPRA are computed as random values from distributions P(ld = 30), P(ld = 70) and P(lb = 90);
   + *Tier* patients are classified in two Tiers as described on [POL186/11 – Kidney Transplantation: Deceased Donor Organ Allocation](https://nhsbtdbe.blob.core.windows.net/umbraco-assets-corp/22127/pol186.pdf) from UK transplant. In Tier A are patients with MS = 10 or cPRA = 100% or time on dialysis > 7 years, all remaing patients are classified as Tier B;
   + *MS* matchabilily score are the deciles obtained from the number of donors on dataset `D10K` that are a match to each transplant candidate. [This score takes into account a patient’s blood type, HLA type and cPRA value. A patient with a MS = 1 is defined as easy to match and a MS = 10 as difficult to match.](https://www.odt.nhs.uk/odt-structures-and-standards/odt-hub-programme/kidney-offering-scheme/#:~:text=blood%20group%20match-,Key%20terms,10%20as%20difficult%20to%20match)
-  + *RRI* when option `uk = TRUE`, Recipient Risk Index is copmputed as described by [transplantr](https://transplantr.txtools.net/articles/kidney_risk_scores.html). To compute RRI, variables age, time on dialysis (in days) and the probability of being diabetic (obtained from `prob.dm`) are used. Also, we assumed all patients were on dialysis at time of listing.
+  + *RRI* when option `uk = TRUE`, Recipient Risk Index is copmputed as described by [transplantr](https://transplantr.txtools.net/articles/kidney_risk_scores.html). To compute RRI, variables age, time on dialysis (in days) and the probability of being diabetic (obtained from `prob_dm`) are used. Also, we assumed all patients were on dialysis at time of listing.
   
-defining `n.seed` allows for reproducibility.
+defining `n_seed` allows for reproducibility.
 
 ### HLA antibodies
 
-the function `Abs.df()` allows to generate a data frame with HLA antibodies from a candidates waiting list:
+the function `Abs_df()` allows to generate a data frame with HLA antibodies from a candidates waiting list:
 
 ```
 Abs_df(candidates = candidates_df(n=10), 
@@ -140,7 +140,7 @@ Abs_df(candidates = candidates_df(n=10),
 # ... with 39 more rows
 ```
 
-as inputs, this function requires a data set with an *ID* and patients HLA information (HLA typing and cPRA value) with the same format as provided  by `candidates.df()`. Defining `n.seed` allows for reproducibility.
+as inputs, this function requires a data set with an *ID* and patients HLA information (HLA typing and cPRA value) with the same format as provided  by `candidates_df()`. Defining `n_seed` allows for reproducibility.
 
 :warning: 
 All these functions rely on HLA typing at intermediate resolution as described at  [Lima *et al*, 2013](https://www.slideshare.net/balima78/lima-2013).
