@@ -129,9 +129,9 @@ vpra <- function(abs = c('A1','A2','B5','DR4'), donors = D10K){
 #' @param n.seed a numeric seed that will be used for random number generation.
 #' @return a character vector with HLA abs.
 #' @examples
-#' abs(cA = c('2','29'), cB = c('7','15'), cDR = c('4','7'), cPRA = 85, n.seed = 3)
+#' Abs(cA = c('2','29'), cB = c('7','15'), cDR = c('4','7'), cPRA = 85, n.seed = 3)
 #' @export
-abs <- function(cA = c('2','29'), cB = c('7','15'), cDR = c('4','7'),
+Abs <- function(cA = c('2','29'), cB = c('7','15'), cDR = c('4','7'),
                 cPRA = 85, n.seed = 3){
 
   set.seed(n.seed)

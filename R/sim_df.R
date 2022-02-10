@@ -37,8 +37,8 @@ donors.df <- function(n = 1000, replace = TRUE,
     df$height <- truncnorm::rtruncnorm(n = n, a=150, b=200, mean = 165, sd = 20)
     # # a column for hypertension with a mean frequency of 43%
     df$hypertension <- sample(c(1,0), size = n, replace = TRUE, prob = c(0.4, 0.6))
-    # # a column for sex with a mean frequency of men (0) = 55%
-    df$sex <- sample(c(0,1), size = n, replace = TRUE, prob = c(0.55,0.45))
+    # # a column for sex with a mean frequency of men (M) = 55%
+    df$sex <- sample(c('M','F'), size = n, replace = TRUE, prob = c(0.55,0.45))
     # # a column for CMV+ with a mean frequency of 90%
     df$cmv <- sample(c(1,0), size = n, replace = TRUE, prob = c(0.9, 0.1))
     # # a column for nº of days stayed on Hospital with P(4)
@@ -144,7 +144,7 @@ abs.df <- function(candidates = candidates.df(n=10), n.seed = 3){
 
   df <- candidates %>%
     dplyr::rowwise() %>%
-    dplyr::mutate(abs = list(abs(cA = c(A1,A2), cB = c(B1,B2), cDR = c(DR1,DR2),
+    dplyr::mutate(abs = list(Abs(cA = c(A1,A2), cB = c(B1,B2), cDR = c(DR1,DR2),
                                     cPRA = cPRA,
                                     n.seed = n.seed)$Abs))
 

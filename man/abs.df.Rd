@@ -4,7 +4,7 @@
 \alias{abs.df}
 \title{A data frame with candidates' HLA antibodies}
 \usage{
-abs.df(candidates = candidates.df(n = 10), n.seed = 3)
+\method{abs}{df}(candidates = candidates.df(n = 10), n.seed = 3)
 }
 \arguments{
 \item{candidates}{A dataframe with \code{ID}, HLA typing (column names: \code{A1}, \code{A2}, \code{B1}, \code{B2}, \code{DR1}, \code{DR2}) and cPRA value (column name: \code{cPRA}), for a group of transplant candidates.}
