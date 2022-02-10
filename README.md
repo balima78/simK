@@ -8,9 +8,13 @@ able, usable state and is being actively developed.](https://www.repostatus.org/
 
 :dart: Functions to procedurally generate synthetic data in R for kidney transplant simulations.
 
-`simK` allows to generate data with clinical and demographic information for a pool of simulated cadaveric donors and a simulated wait listed candidates for kidney transplantation.
+`simK` allows to generate data with clinical and demographic information for a pool of simulated cadaveric donors and simulated wait listed candidates for kidney transplantation.
 
 Data generated with `simK` are particularly useful on [KARS](https://balima.shinyapps.io/kars/).
+
+:warning: 
+This package is not a medical device and **should not be used for making clinical decisions**.
+:warning: 
 
 ## Instalation
 
@@ -20,7 +24,7 @@ The development version can be installed from GitHub, if you want all the latest
 
 ```
 # install from GitHub
-devtools::install_packages("balima78/simK")
+devtools::install_github("balima78/simK")
 ```
 
 ## Main functions
@@ -33,6 +37,8 @@ A data frame with information for a pool of simulated donors can be generated wi
 
 ```
 library(simK)
+# you must run also tidyverse
+library(tidyverse)
 
 donors.df(n = 10, 
           replace = TRUE, 
