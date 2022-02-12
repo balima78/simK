@@ -1,7 +1,7 @@
 
 <!-- README.md is generated from README.Rmd. Please edit that file -->
 
-# simK <img src="man/figures/simk.png" height="150" align="right"/>
+# simK <img src="man/figures/logo.png" height="150" align="right"/>
 
 [![Project Status: Active – The project has reached a st able, usable
 state and is being actively
