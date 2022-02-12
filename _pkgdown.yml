@@ -1,25 +1,15 @@
 url: https://balima78.github.io/simK/
-template:
-  bootstrap: 5
-
 home:
   title: Simulate data for Kidney transplantation
-
 template:
   bootstrap: 5
 reference:
 - title: Generate Data
-- contents:
-  - has_concept("generate_data")
-
+- contents: has_concept("generate_data")
 - title: Clinical Parameters
-- contents:
-  - has_concept("clinical_parameters")
-
+- contents: has_concept("clinical_parameters")
 - title: Demographic parameters
-- contents:
-  - has_concept("demographic_parameters")
-
+- contents: has_concept("demographic_parameters")
 - title: Histocompatibility
-- contents:
-  - has_concept("histocompatibility")
+- contents: has_concept("histocompatibility")
+
