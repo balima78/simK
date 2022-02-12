@@ -12,8 +12,10 @@
 #' mmDR number of HLA-DR mismatchs between \code{dDR} and \code{cDR};
 #' and mmHLA as the sum of mmA + mmB + mmDR
 #' @examples
-#' mmHLA(dA = c('1','2'), dB = c('5','7'), dDR = c('1','4'), cA = c('1','2'), cB = c('03','15'), cDR = c('04','07'))
+#' mmHLA(dA = c('1','2'), dB = c('5','7'), dDR = c('1','4'),
+#' cA = c('1','2'), cB = c('03','15'), cDR = c('04','07'))
 #' @export
+#' @concept histocompatibility
 mmHLA <- function(dA = c('1','2'), dB = c('5','7'), dDR = c('1','4'),
                   cA = c('1','2'), cB = c('3','15'), cDR = c('4','7')){
 
@@ -55,7 +57,10 @@ mmHLA <- function(dA = c('1','2'), dB = c('5','7'), dDR = c('1','4'),
 
 #' Matchability from D10K
 #'
-#' @description Computes the number donors on dataset D10K that are a match to a given transplant candidate. A sample of D10K is selected according to cPRA value, and donors ABO identical and HLA mismatch level 1 or 2 (0 DR or (1 DR and 0 B)) are filtered.
+#' @description Computes the number donors on dataset D10K that are a match to
+#' a given transplant candidate. A sample of D10K is selected according to
+#' cPRA value, and donors ABO identical and HLA mismatch level 1 or 2
+#' (0 DR or (1 DR and 0 B)) are filtered.
 #' @param cABO A character from 'A', 'B', 'AB', 'O'
 #' @param cPRA candidate's cPRA value
 #' @param cA candidate's HLA-A typing
@@ -64,8 +69,11 @@ mmHLA <- function(dA = c('1','2'), dB = c('5','7'), dDR = c('1','4'),
 #' @param n_seed a numeric seed that will be used for random number generation.
 #' @return Match Score measure of how difficult it is to match a patient with a organ donor. A score from 1 (easy to match) to 10 (difficult to match).
 #' @examples
-#' matchability(cABO = 'A', cPRA = 85, cA = c('2','29'), cB = c('7','15'), cDR = c('4','7'), n_seed = 3)
+#' matchability(cABO = 'A', cPRA = 85,
+#' cA = c('2','29'), cB = c('7','15'), cDR = c('4','7'),
+#' n_seed = 3)
 #' @export
+#' @concept histocompatibility
 matchability <- function(cABO = 'A', cPRA = 85,
                          cA = c('2','29'), cB = c('7','15'), cDR = c('4','7'),
                          n_seed = 3){
@@ -102,6 +110,7 @@ matchability <- function(cABO = 'A', cPRA = 85,
 #' @examples
 #' vpra(abs = c('A1','A2','B5','DR4'), donors = D10K)
 #' @export
+#' @concept histocompatibility
 vpra <- function(abs = c('A1','A2','B5','DR4'), donors = D10K){
 
   require(magrittr)
@@ -125,7 +134,8 @@ vpra <- function(abs = c('A1','A2','B5','DR4'), donors = D10K){
 
 #' samples HLA antibodies
 #'
-#' @description creates a sample of HLA antibodies (abs) for a given candidate according with a cPRA value.
+#' @description creates a sample of HLA antibodies (abs) for a given candidate
+#' according with a cPRA value.
 #' @param cA candidate's HLA-A typing
 #' @param cB candidate's HLA-B typing
 #' @param cDR candidate's HLA-DR typing
@@ -135,6 +145,7 @@ vpra <- function(abs = c('A1','A2','B5','DR4'), donors = D10K){
 #' @examples
 #' antbs(cA = c('2','29'), cB = c('7','15'), cDR = c('4','7'), cPRA = 85, n_seed = 3)
 #' @export
+#' @concept histocompatibility
 antbs <- function(cA = c('2','29'), cB = c('7','15'), cDR = c('4','7'),
                 cPRA = 85, n_seed = 3){
 

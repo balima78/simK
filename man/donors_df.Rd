@@ -39,8 +39,13 @@ donors_df(
 A data frame with HLA typing, blood group and truncated ages for a simulated group of transplant donors.
 }
 \description{
-Returns a data frame for simulated donors clinical and demographic caracheristics.
+Returns a data frame for simulated donors clinical and
+demographic caracheristics.
 }
 \examples{
-donors_df(n = 10, replace = TRUE, probs = c(0.4658, 0.0343, 0.077, 0.4229), lower=18, upper=75, mean = 55, sd = 15, uk = FALSE, n_seed = 3)
+donors_df(n = 10, replace = TRUE,
+probs = c(0.4658, 0.0343, 0.077, 0.4229),
+lower=18, upper=75, mean = 55, sd = 15,
+uk = FALSE, n_seed = 3)
 }
+\concept{generate_data}

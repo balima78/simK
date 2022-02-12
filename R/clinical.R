@@ -7,6 +7,7 @@
 #' @examples
 #' hla_sample(n = 1000, replace = TRUE)
 #' @export
+#' @concept clinical_parameters
 hla_sample <- function(n, replace){
 
   if(!is.numeric(n)){stop("`n` must be a single number!")}
@@ -19,7 +20,8 @@ hla_sample <- function(n, replace){
 
 #' Builds a vector with ABO blood group
 #'
-#' @description Returns a vector with ABO blood groups according to user defined frequencies
+#' @description Returns a vector with ABO blood groups according to user defined
+#' frequencies
 #' @param n An integer to define the length of the returned vector
 #' @param probs A vector with the probabilities for blood group A, AB, B and O (in this order). The sum of the probabilities must be equal to one.
 #' @return A vector length `n` with ABO blood groups
@@ -38,12 +40,14 @@ abo <- function(n = 100, probs = c(0.4658, 0.0343, 0.077, 0.4229)){
 
 #' Gives a eGFR by age
 #'
-#' @description Returns a value for the Estimated Glomerular Filtration Rate (eGFR) by age as described by https://www.kidney.org/atoz/content/gfr.
+#' @description Returns a value for the Estimated Glomerular Filtration Rate
+#' (eGFR) by age as described by https://www.kidney.org/atoz/content/gfr.
 #' @param age An integer for age (values between 1 and 99).
 #' @return A value from a normal distribution.
 #' @examples
 #' aGFR(age = 43)
 #' @export
+#' @concept clinical_parameters
 aGFR <- function(age = 43){
   if(!is.numeric(age) | age < 1 | age > 99){stop("`age` must be between 1 and 99!")}
 
@@ -60,13 +64,15 @@ aGFR <- function(age = 43){
 
 #' Builds a vector with cPRA (percentage)
 #'
-#' @description Returns a vector with cPRA percentages according to user defined frequencies
+#' @description Returns a vector with cPRA percentages according to user
+#' defined frequencies
 #' @param n An integer to define the length of the returned vector
 #' @param probs A vector with the probabilities for cPRA groups 0%, 1%-50%, 51%-84%, 85%-100% (in this order). The sum of the probabilities must be equal to one.
 #' @return A vector length `n` with cPRA percentages
 #' @examples
 #' cpra(n = 100, probs = c(0.7, 0.1, 0.1, 0.1))
 #' @export
+#' @concept clinical_parameters
 cpra <- function(n = 100, probs = c(0.7, 0.1, 0.1, 0.1)){
 
   if(!is.numeric(n) | n < 1){stop("`n` must be a single number!")}
@@ -97,6 +103,7 @@ cpra <- function(n = 100, probs = c(0.7, 0.1, 0.1, 0.1)){
 #' @examples
 #' dial(hiper = TRUE, bg = 'O')
 #' @export
+#' @concept clinical_parameters
 dial <- function(hiper = TRUE, bg = 'O'){
   if(!bg %in% c('A','AB','B','O')){stop("`bg` is not valid! valid blood group: 'A','AB','B','O'")}
   if(!is.logical(hiper)){stop("`hiper` must be a logical value!")}

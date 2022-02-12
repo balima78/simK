@@ -13,8 +13,10 @@ aGFR(age = 43)
 A value from a normal distribution.
 }
 \description{
-Returns a value for the Estimated Glomerular Filtration Rate (eGFR) by age as described by https://www.kidney.org/atoz/content/gfr.
+Returns a value for the Estimated Glomerular Filtration Rate
+(eGFR) by age as described by https://www.kidney.org/atoz/content/gfr.
 }
 \examples{
 aGFR(age = 43)
 }
+\concept{clinical_parameters}

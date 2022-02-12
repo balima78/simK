@@ -20,3 +20,4 @@ Computes virtual PRA (vPRA) form HLA-A, -B, -DR loci.
 \examples{
 vpra(abs = c('A1','A2','B5','DR4'), donors = D10K)
 }
+\concept{histocompatibility}

@@ -20,3 +20,4 @@ Returns a data frame with HLA-A, -B, -C and -DRB1 typing
 \examples{
 hla_sample(n = 1000, replace = TRUE)
 }
+\concept{clinical_parameters}

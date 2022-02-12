@@ -21,8 +21,10 @@ ages(n = 100, lower = 18, upper = 75, mean = 55, sd = 15)
 A vector length \code{n} with normal distributed truncated ages.
 }
 \description{
-Returns a vector with ages with a normal distribution truncated by upper anf upper limits.
+Returns a vector with ages with a normal distribution truncated
+by upper and upper limits.
 }
 \examples{
 ages(n = 100, lower=18, upper=75, mean = 55, sd = 15)
 }
+\concept{demographic_parameters}

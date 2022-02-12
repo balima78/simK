@@ -15,8 +15,10 @@ cpra(n = 100, probs = c(0.7, 0.1, 0.1, 0.1))
 A vector length \code{n} with cPRA percentages
 }
 \description{
-Returns a vector with cPRA percentages according to user defined frequencies
+Returns a vector with cPRA percentages according to user
+defined frequencies
 }
 \examples{
 cpra(n = 100, probs = c(0.7, 0.1, 0.1, 0.1))
 }
+\concept{clinical_parameters}

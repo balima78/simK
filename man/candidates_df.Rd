@@ -45,8 +45,14 @@ candidates_df(
 A data frame with HLA typing, blood group, truncated ages, time on dialysis (in months), cPRA, Tier, MS and RRI (those last 3, only when uk = TRUE) for a simulated group of transplant candidates.
 }
 \description{
-Returns a data frame for simulated donors clinical and demographic characteristics.
+Returns a data frame for simulated donors clinical and
+demographic characteristics.
 }
 \examples{
-candidates_df(n = 10, replace = TRUE, probs_abo = c(0.43, 0.03, 0.08, 0.46), probs_cpra = c(0.7, 0.1, 0.1, 0.1), lower=18, upper=75, mean = 45, sd = 15, prob_dm = 0.12, uk = FALSE, n_seed = 3)
+candidates_df(n = 10, replace = TRUE,
+probs_abo = c(0.43, 0.03, 0.08, 0.46), probs_cpra = c(0.7, 0.1, 0.1, 0.1),
+lower=18, upper=75, mean = 45, sd = 15,
+prob_dm = 0.12,
+uk = FALSE, n_seed = 3)
 }
+\concept{generate_data}

@@ -27,8 +27,10 @@ antbs(
 a character vector with HLA abs.
 }
 \description{
-creates a sample of HLA antibodies (abs) for a given candidate according with a cPRA value.
+creates a sample of HLA antibodies (abs) for a given candidate
+according with a cPRA value.
 }
 \examples{
 antbs(cA = c('2','29'), cB = c('7','15'), cDR = c('4','7'), cPRA = 85, n_seed = 3)
 }
+\concept{histocompatibility}

@@ -36,5 +36,7 @@ and mmHLA as the sum of mmA + mmB + mmDR
 Computes the number of HLA mismatchs between one donor and one candidate
 }
 \examples{
-mmHLA(dA = c('1','2'), dB = c('5','7'), dDR = c('1','4'), cA = c('1','2'), cB = c('03','15'), cDR = c('04','07'))
+mmHLA(dA = c('1','2'), dB = c('5','7'), dDR = c('1','4'),
+cA = c('1','2'), cB = c('03','15'), cDR = c('04','07'))
 }
+\concept{histocompatibility}

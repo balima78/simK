@@ -30,8 +30,14 @@ matchability(
 Match Score measure of how difficult it is to match a patient with a organ donor. A score from 1 (easy to match) to 10 (difficult to match).
 }
 \description{
-Computes the number donors on dataset D10K that are a match to a given transplant candidate. A sample of D10K is selected according to cPRA value, and donors ABO identical and HLA mismatch level 1 or 2 (0 DR or (1 DR and 0 B)) are filtered.
+Computes the number donors on dataset D10K that are a match to
+a given transplant candidate. A sample of D10K is selected according to
+cPRA value, and donors ABO identical and HLA mismatch level 1 or 2
+(0 DR or (1 DR and 0 B)) are filtered.
 }
 \examples{
-matchability(cABO = 'A', cPRA = 85, cA = c('2','29'), cB = c('7','15'), cDR = c('4','7'), n_seed = 3)
+matchability(cABO = 'A', cPRA = 85,
+cA = c('2','29'), cB = c('7','15'), cDR = c('4','7'),
+n_seed = 3)
 }
+\concept{histocompatibility}

@@ -1,6 +1,7 @@
 #' A data frame with donors caracheristics
 #'
-#' @description Returns a data frame for simulated donors clinical and demographic caracheristics.
+#' @description Returns a data frame for simulated donors clinical and
+#' demographic caracheristics.
 #' @param n An integer to define the number of rows
 #' @param replace A logical value for sampling with replacement
 #' @param probs A vector with the probabilities for blood group A, AB, B and O (in this order). The sum of the probabilities must be equal to one.
@@ -12,8 +13,12 @@
 #' @param n_seed a numeric seed that will be used for random number generation.
 #' @return A data frame with HLA typing, blood group and truncated ages for a simulated group of transplant donors.
 #' @examples
-#' donors_df(n = 10, replace = TRUE, probs = c(0.4658, 0.0343, 0.077, 0.4229), lower=18, upper=75, mean = 55, sd = 15, uk = FALSE, n_seed = 3)
+#' donors_df(n = 10, replace = TRUE,
+#' probs = c(0.4658, 0.0343, 0.077, 0.4229),
+#' lower=18, upper=75, mean = 55, sd = 15,
+#' uk = FALSE, n_seed = 3)
 #' @export
+#' @concept generate_data
 donors_df <- function(n = 10, replace = TRUE,
                       probs = c(0.4658, 0.0343, 0.077, 0.4229),
                       lower=18, upper=75,
@@ -64,7 +69,8 @@ donors_df <- function(n = 10, replace = TRUE,
 
 #' A data frame with donors characteristics
 #'
-#' @description Returns a data frame for simulated donors clinical and demographic characteristics.
+#' @description Returns a data frame for simulated donors clinical and
+#' demographic characteristics.
 #' @param n An integer to define the number of rows
 #' @param replace A logical value for sampling with replacement
 #' @param probs_abo A vector with the probabilities for blood group A, AB, B and O (in this order). The sum of the probabilities must be equal to one.
@@ -78,8 +84,13 @@ donors_df <- function(n = 10, replace = TRUE,
 #' @param n_seed a numeric seed that will be used for random number generation.
 #' @return A data frame with HLA typing, blood group, truncated ages, time on dialysis (in months), cPRA, Tier, MS and RRI (those last 3, only when uk = TRUE) for a simulated group of transplant candidates.
 #' @examples
-#' candidates_df(n = 10, replace = TRUE, probs_abo = c(0.43, 0.03, 0.08, 0.46), probs_cpra = c(0.7, 0.1, 0.1, 0.1), lower=18, upper=75, mean = 45, sd = 15, prob_dm = 0.12, uk = FALSE, n_seed = 3)
+#' candidates_df(n = 10, replace = TRUE,
+#' probs_abo = c(0.43, 0.03, 0.08, 0.46), probs_cpra = c(0.7, 0.1, 0.1, 0.1),
+#' lower=18, upper=75, mean = 45, sd = 15,
+#' prob_dm = 0.12,
+#' uk = FALSE, n_seed = 3)
 #' @export
+#' @concept generate_data
 candidates_df <- function(n = 10, replace = TRUE,
                           probs_abo = c(0.43, 0.03, 0.08, 0.46),
                           probs_cpra = c(0.7, 0.1, 0.1, 0.1),
@@ -137,27 +148,29 @@ candidates_df <- function(n = 10, replace = TRUE,
 
 #' A data frame with candidates' HLA antibodies
 #'
-#' @description Returns a data frame with transplant candidates' HLA antibodies obtained according to theirs cPRA values and HLA typing.
+#' @description Returns a data frame with transplant candidates' HLA antibodies
+#' obtained according to theirs cPRA values and HLA typing.
 #' @param candidates A dataframe with \code{ID}, HLA typing (column names: \code{A1}, \code{A2}, \code{B1}, \code{B2}, \code{DR1}, \code{DR2}) and cPRA value (column name: \code{cPRA}), for a group of transplant candidates.
 #' @param n_seed a numeric seed that will be used for random number generation.
 #' @return A data frame with \code{ID} and HLA antibodies \code{Abs}.
 #' @examples
 #' Abs_df(candidates = candidates_df(n=10), n_seed = 3)
 #' @export
+#' @concept generate_data
 Abs_df <- function(candidates = candidates_df(n=10), n_seed = 3){
 
   require("magrittr")
 
   df <- candidates %>%
     dplyr::rowwise() %>%
-    dplyr::mutate(Abs = list(antbs(cA = c(A1,A2), cB = c(B1,B2), cDR = c(DR1,DR2),
+    dplyr::mutate(abs = list(antbs(cA = c(A1,A2), cB = c(B1,B2), cDR = c(DR1,DR2),
                                     cPRA = cPRA,
                                     n_seed = n_seed)$Abs)) %>%
     dplyr::ungroup()
 
   df %>%
     dplyr::filter(cPRA > 0) %>%
-    dplyr::select(ID, Abs) %>%
-    tidyr::unnest(Abs)
+    dplyr::select(ID, abs) %>%
+    tidyr::unnest(abs)
 
 }

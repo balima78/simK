@@ -20,3 +20,4 @@ Returns a value for time on dialysis in months by blood group and cPRA.
 \examples{
 dial(hiper = TRUE, bg = 'O')
 }
+\concept{clinical_parameters}

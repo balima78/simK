@@ -15,7 +15,8 @@ abo(n = 100, probs = c(0.4658, 0.0343, 0.077, 0.4229))
 A vector length \code{n} with ABO blood groups
 }
 \description{
-Returns a vector with ABO blood groups according to user defined frequencies
+Returns a vector with ABO blood groups according to user defined
+frequencies
 }
 \examples{
 abo(n = 100, probs = c(0.4658, 0.0343, 0.077, 0.4229))

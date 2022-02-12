@@ -15,8 +15,10 @@ Abs_df(candidates = candidates_df(n = 10), n_seed = 3)
 A data frame with \code{ID} and HLA antibodies \code{Abs}.
 }
 \description{
-Returns a data frame with transplant candidates' HLA antibodies obtained according to theirs cPRA values and HLA typing.
+Returns a data frame with transplant candidates' HLA antibodies
+obtained according to theirs cPRA values and HLA typing.
 }
 \examples{
 Abs_df(candidates = candidates_df(n=10), n_seed = 3)
 }
+\concept{generate_data}
