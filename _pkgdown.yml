@@ -1,4 +1,10 @@
-url: ~
+url: https://balima78.github.io/simK/
+template:
+  bootstrap: 5
+
+home:
+  title: Simulate data for Kidney transplantation
+
 template:
   bootstrap: 5
 reference:
