@@ -1,0 +1,19 @@
+url: ~
+template:
+  bootstrap: 5
+reference:
+- title: Generate Data
+- contents:
+  - has_concept("generate_data")
+
+- title: Clinical Parameters
+- contents:
+  - has_concept("clinical_parameters")
+
+- title: Demographic parameters
+- contents:
+  - has_concept("demographic_parameters")
+
+- title: Histocompatibility
+- contents:
+  - has_concept("histocompatibility")
