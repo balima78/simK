@@ -79,9 +79,10 @@ For a given number of rows `n`, a data frame is generated with columns:
     respectively;
 -   *A1*, *A2*, *B1*, *B2*, *DR1*, *DR2* HLA typing obtained from HLA
     allelic and haplotipic frequencies previously published by [Lima *et
-    al*, 2013](https://www.slideshare.net/balima78/lima-2013) (with
-    `replace = TRUE` we can generate a data frame without limitations on
-    the number of rows);
+    al*,
+    2013](https://12f11c1f-960a-f627-594d-b8ce276384f7.filesusr.com/ugd/3e838e_dc548dede99a4db5869c3d2c20c2d16f.pdf?index=true)
+    (with `replace = TRUE` we can generate a data frame without
+    limitations on the number of rows);
 -   *age* generated from a Normal distribution with `mean` and `sd`
     given by the user, values truncated by `lower` and `upper`
     boundaries;
@@ -137,9 +138,10 @@ For a given number of `n` rows, a data frame is generated with columns:
     frequent);
 -   *A1*, *A2*, *B1*, *B2*, *DR1*, *DR2* HLA typing obtained from HLA
     allelic and haplotipic frequencies previously published by [Lima *et
-    al*, 2013](https://www.slideshare.net/balima78/lima-2013) (with
-    `replace = TRUE` we can generate a data frame without limitations on
-    the number of rows);
+    al*,
+    2013](https://12f11c1f-960a-f627-594d-b8ce276384f7.filesusr.com/ugd/3e838e_dc548dede99a4db5869c3d2c20c2d16f.pdf?index=true)
+    (with `replace = TRUE` we can generate a data frame without
+    limitations on the number of rows);
 -   *age* generated from a Normal distribution with `mean` and `sd`
     given by the user, values truncated by `lower` and `upper`
     boundaries;
@@ -204,4 +206,5 @@ reproducibility.
 
 :warning: All these functions rely on HLA typing at intermediate
 resolution as described at [Lima *et al*,
-2013](https://www.slideshare.net/balima78/lima-2013). :warning:
+2013](https://12f11c1f-960a-f627-594d-b8ce276384f7.filesusr.com/ugd/3e838e_dc548dede99a4db5869c3d2c20c2d16f.pdf?index=true).
+:warning:

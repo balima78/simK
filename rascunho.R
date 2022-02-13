@@ -28,6 +28,11 @@ usethis::use_ccby_license()
 
 usethis::use_news_md(open = rlang::is_interactive())
 
+usethis::use_pkgdown()
+
+pkgdown::build_site()
+usethis::use_pkgdown_github_pages()
+
 # https://rich-iannone.github.io/pointblank/articles/VALID-III.html
 
 set.seed(3)

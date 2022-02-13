@@ -79,7 +79,7 @@ For a given number of rows `n`, a data frame is generated with columns:
 
   + *ID* unique identifier with the prefix 'D'; 
   + *bg* with the blood group generated from the parameter `probs` a vector with the probabilities for groups A, AB, B and O, respectively; 
-  + *A1*, *A2*, *B1*, *B2*, *DR1*, *DR2* HLA typing obtained from HLA allelic and haplotipic frequencies previously published by [Lima *et al*, 2013](https://www.slideshare.net/balima78/lima-2013) (with `replace = TRUE` we can generate a data frame without limitations on the number of rows);
+  + *A1*, *A2*, *B1*, *B2*, *DR1*, *DR2* HLA typing obtained from HLA allelic and haplotipic frequencies previously published by [Lima *et al*, 2013](https://12f11c1f-960a-f627-594d-b8ce276384f7.filesusr.com/ugd/3e838e_dc548dede99a4db5869c3d2c20c2d16f.pdf?index=true) (with `replace = TRUE` we can generate a data frame without limitations on the number of rows);
   + *age* generated from a Normal distribution with `mean` and `sd` given by the user, values truncated by `lower` and `upper` boundaries;
   + *DRI* when option `uk = TRUE`, Donor Risk Index is copmputed as described by [transplantr](https://transplantr.txtools.net/articles/kidney_risk_scores.html) 
   
@@ -121,7 +121,7 @@ For a given number of `n` rows, a data frame is generated with columns:
 
   + *ID* unique identifier with the prefix 'K'; 
   + *bg* with the blood group generated from the parameter `probs_abo` a vector with the probabilities for groups A, AB, B and O, respectively (here by default, we assumed group O patients are more frequent); 
-  + *A1*, *A2*, *B1*, *B2*, *DR1*, *DR2* HLA typing obtained from HLA allelic and haplotipic frequencies previously published by [Lima *et al*, 2013](https://www.slideshare.net/balima78/lima-2013) (with `replace = TRUE` we can generate a data frame without limitations on the number of rows);
+  + *A1*, *A2*, *B1*, *B2*, *DR1*, *DR2* HLA typing obtained from HLA allelic and haplotipic frequencies previously published by [Lima *et al*, 2013](https://12f11c1f-960a-f627-594d-b8ce276384f7.filesusr.com/ugd/3e838e_dc548dede99a4db5869c3d2c20c2d16f.pdf?index=true) (with `replace = TRUE` we can generate a data frame without limitations on the number of rows);
   + *age* generated from a Normal distribution with `mean` and `sd` given by the user, values truncated by `lower` and `upper` boundaries;
   + *dialysis* time on dialysis **in months**, values computed according to patients' blood group and hypersensitation status (cPRA > 85%): for patients with blood group O **and** Hypersinsitized time on dialysis obtained from N(85, 20); for those patients blood O **or** Hypersinsitized $N(70,20)$; remaining patients have time on dialysis obtained from $N(35,20)$;
   + *cPRA* patients are classified in groups with probabilities given by `probs_cpra` for 0%, 1%-50%, 51%-85% and 86%-100%, respectively. Within the groups > 0%, cPRA are computed as random values from distributions $P(\lambda = 30)$, $P(\lambda = 70)$ and $P(\lambda = 90)$;
@@ -158,5 +158,5 @@ Abs_df(candidates = candidates_df(n=10),
 as inputs, this function requires a data set with an *ID* and patients HLA information (HLA typing and cPRA value) with the same format as provided  by `candidates_df()`. Defining `n_seed` allows for reproducibility.
 
 :warning: 
-All these functions rely on HLA typing at intermediate resolution as described at  [Lima *et al*, 2013](https://www.slideshare.net/balima78/lima-2013).
+All these functions rely on HLA typing at intermediate resolution as described at  [Lima *et al*, 2013](https://12f11c1f-960a-f627-594d-b8ce276384f7.filesusr.com/ugd/3e838e_dc548dede99a4db5869c3d2c20c2d16f.pdf?index=true).
 :warning:
