@@ -1,8 +1,19 @@
 url: https://simk.netlify.app/
 home:
   title: Simulate data for Kidney transplantation
+
 template:
   bootstrap: 5
+
+navbar:
+  structure:
+    left: [setup, reference, news]
+    right: [search, github]
+  components:
+    setup:
+      text: Get started
+      href: articles/simk.html
+
 reference:
 - title: Generate Data
 - contents: has_concept("generate_data")

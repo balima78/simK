@@ -17,6 +17,8 @@ Depends:
     R (>= 3.10)
 LazyData: true
 Suggests:
+    rmarkdown,
+    knitr,
     testthat (>= 3.0.0)
 Imports:
     data.table,
@@ -36,3 +38,4 @@ Collate:
     'data.R'
     'simK.R'
     'histo.R'
+VignetteBuilder: knitr
