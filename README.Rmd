@@ -21,7 +21,7 @@ able, usable state and is being actively developed.](https://www.repostatus.org/
 
 
 
-:dart: Functions to procedurally generate synthetic data in R for kidney transplant simulations. You can see `simK` in action from [here](https://simk.netlify.app/).
+:dart: Functions to procedurally generate synthetic data in R for kidney transplant simulations. You can see `simK` in action, [here](https://simk.netlify.app/).
 
 `simK` allows to generate data with clinical and demographic information for a pool of simulated cadaveric donors and simulated wait listed candidates for kidney transplantation.
 
@@ -44,7 +44,7 @@ devtools::install_github("balima78/simK")
 
 This package has 3 main functions, with them we can generate simulated data for a pool of donors, a set of kidney transplant candidates and the respective HLA-antibodies for those patients HLA sensitized.
 
-
+A detailed description of these functions usage, is available from [here](https://simk.netlify.app/articles/simk.html).
 
 :warning: 
 All these functions rely on HLA typing at intermediate resolution as described at  [Lima *et al*, 2013](https://12f11c1f-960a-f627-594d-b8ce276384f7.filesusr.com/ugd/3e838e_dc548dede99a4db5869c3d2c20c2d16f.pdf?index=true).

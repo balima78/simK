@@ -29,9 +29,6 @@ library(simK)
 A data frame with information for a pool of simulated donors can be generated with the function `donors_df()`:
 
 ```{r, message=F, warning=FALSE}
-# running tidyverse is advised
-library(tidyverse)
-
 donors_df(n = 10, 
           replace = TRUE, 
           probs = c(0.4658, 0.0343, 0.077, 0.4229), 
