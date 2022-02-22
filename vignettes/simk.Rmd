@@ -48,10 +48,10 @@ For a given number of rows `n`, a data frame is generated with columns:
   
 HLA population `origin` has currently as valid options 'PT' for Portuguese, and populations available from [US National Marrow Donor Program](https://bioinformatics.bethematchclinical.org/hla-resources/haplotype-frequencies/a-b-drb1-224-haplotype-frequencies/):
 
-    + API - Asian / Pacific Islander
-    + AFA - African American / Black
-    + CAU - White / Caucasian
-    + HIS - Hispanic
+  + 'API' - Asian / Pacific Islander
+  + 'AFA' - African American / Black
+  + 'CAU' - White / Caucasian
+  + 'HIS' - Hispanic
   
 Defining `n_seed` allows for reproducibility.
 
