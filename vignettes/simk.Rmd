@@ -29,13 +29,13 @@ library(simK)
 A data frame with information for a pool of simulated donors can be generated with the function `donors_df()`:
 
 ```{r, message=F, warning=FALSE}
-# donors_df(n = 10,
-#           replace = TRUE,
-#           origin = 'PT',
-#           probs = c(0.4658, 0.0343, 0.077, 0.4229),
-#           lower = 18, upper = 75, mean = 55, sd = 15,
-#           uk = FALSE,
-#           n_seed = 3)
+donors_df(n = 10,
+          replace = TRUE,
+          origin = 'PT',
+          probs = c(0.4658, 0.0343, 0.077, 0.4229),
+          lower = 18, upper = 75, mean = 55, sd = 15,
+          uk = FALSE,
+          n_seed = 3)
 ```
 
 For a given number of rows `n`, a data frame is generated with columns: 
@@ -62,15 +62,15 @@ Defining `n_seed` allows for reproducibility.
 A simulated waiting list for kidney transplant candidates, can be generated with `candidates_df()`:
 
 ```{r}
-# candidates_df(n = 10,
-#               replace = TRUE,
-#               origin = 'PT',
-#               probs_abo = c(0.43, 0.03, 0.08, 0.46),
-#               probs_cpra = c(0.7, 0.1, 0.1, 0.1),
-#               lower = 18, upper = 75, mean = 45, sd = 15,
-#               prob_dm = 0.12,
-#               uk = TRUE,
-#               n_seed = 3)
+candidates_df(n = 10,
+              replace = TRUE,
+              origin = 'PT',
+              probs_abo = c(0.43, 0.03, 0.08, 0.46),
+              probs_cpra = c(0.7, 0.1, 0.1, 0.1),
+              lower = 18, upper = 75, mean = 45, sd = 15,
+              prob_dm = 0.12,
+              uk = TRUE,
+              n_seed = 3)
 ```
 
 For a given number of `n` rows, a data frame is generated with columns: 
@@ -94,9 +94,9 @@ Defining `n_seed` allows for reproducibility.
 the function `Abs_df()` allows to generate a data frame with HLA antibodies from a candidates waiting list:
 
 ```{r}
-# Abs_df(candidates = candidates_df(n=10),
-#        origin = 'PT', 
-#        n_seed = 3)
+Abs_df(candidates = candidates_df(n=10),
+       origin = 'PT',
+       n_seed = 3)
 ```
 
 as inputs, this function requires a data set with an *ID* and patients HLA information (HLA typing and cPRA value) with the same format as provided  by `candidates_df()`. Defining `n_seed` allows for reproducibility.

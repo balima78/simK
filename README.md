@@ -45,8 +45,8 @@ respective HLA-antibodies for those patients HLA sensitized.
 A detailed description of these functions usage, is available from
 [here](https://simk.netlify.app/articles/simk.html).
 
-:warning: All these functions rely on HLA typing at intermediate
-resolution for PT origin, as described at [Lima *et al*,
+:warning: For PT origin, all these functions rely on HLA typing at
+intermediate resolution as described at [Lima *et al*,
 2013](https://12f11c1f-960a-f627-594d-b8ce276384f7.filesusr.com/ugd/3e838e_dc548dede99a4db5869c3d2c20c2d16f.pdf?index=true).
 
 :warning: For NMDP populations, HLA typing were described by [Gragert
