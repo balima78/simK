@@ -79,7 +79,7 @@ matchability <- function(cABO = 'A', cPRA = 85,
                          n_seed = 3){
   if(!cABO %in% c('A','AB','B','O')){stop("Blood group is not valid! Valid options: 'A','AB','B','O'")}
 
-  require(magrittr)
+  require('magrittr', quietly = TRUE)
 
   set.seed(n_seed)
 
@@ -113,9 +113,9 @@ matchability <- function(cABO = 'A', cPRA = 85,
 #' @concept histocompatibility
 vpra <- function(abs = c('A1','A2','B5','DR4'), donors = D10K){
 
-  require(magrittr)
+  require("magrittr", quietly = TRUE)
 
-  n <- nrow(D10K)
+  n <- nrow(donors)
 
   na <- donors %>%
     dplyr::mutate_at(dplyr::vars(A1,A2), function(x) paste0('A',x)) %>%
@@ -140,31 +140,51 @@ vpra <- function(abs = c('A1','A2','B5','DR4'), donors = D10K){
 #' @param cB candidate's HLA-B typing
 #' @param cDR candidate's HLA-DR typing
 #' @param cPRA candidate's cPRA value
+#' @param origin A character value from options: 'API', 'AFA', 'CAU' and 'HIS'
 #' @param n_seed a numeric seed that will be used for random number generation.
 #' @return a character vector with HLA abs.
 #' @examples
-#' antbs(cA = c('2','29'), cB = c('7','15'), cDR = c('4','7'), cPRA = 85, n_seed = 3)
+#' antbs(cA = c('2','29'), cB = c('7','15'), cDR = c('4','7'),
+#' cPRA = 85, origin = 'PT', n_seed = 3)
 #' @export
 #' @concept histocompatibility
 antbs <- function(cA = c('2','29'), cB = c('7','15'), cDR = c('4','7'),
-                cPRA = 85, n_seed = 3){
+                cPRA = 85,
+                origin = 'PT', n_seed = 3){
 
   set.seed(n_seed)
 
   typing <- c(paste0('A',cA), paste0('B',cB), paste0('DR',cDR))
 
-  valid.ags <- c(agA, agB, agDR)[!c(agA, agB, agDR) %in% typing]
+  if(origin == 'PT') {
+    valid.ags <- c(agA, agB, agDR)[!c(agA, agB, agDR) %in% typing]
+    dd <- D10K
+  } else {
+    valid.ags <- c(agA_MNDP, agB_MNDP, agDR_MNDP)[!c(agA, agB, agDR) %in% typing]
+    if(origin == 'API'){dd <- D10K_API}
+    if(origin == 'AFA'){dd <- D10K_AFA}
+    if(origin == 'CAU'){dd <- D10K_CAU}
+    if(origin == 'HIS'){dd <- D10K_HIS}
+    }
+
+  # if(origin == 'PT'){
+  #   vpra <- function(abs){vpra(abs, donors = D10K)}
+  # }
+  # if(origin == 'API') vpra <- function(abs) vpra(abs, donors = D10K_API)
+  # if(origin == 'AFA') vpra <- function(abs) vpra(abs, donors = D10K_AFA)
+  # if(origin == 'CAU') vpra <- function(abs) vpra(abs, donors = D10K_CAU)
+  # if(origin == 'HIS') vpra <- function(abs) vpra(abs, donors = D10K_HIS)
 
   c = NULL
   if(cPRA > 0){
     for(i in 1:250){
       c[i] <- sample(valid.ags, 1, replace = F)
 
-      if(vpra(c)>cPRA-3){ break }
+      if(vpra(c, donors = dd)>cPRA-3){ break }
     }
   }
 
-  vpra <- vpra(c)
+  vpra <- vpra(c, donors = dd)
 
   list(cPRA = cPRA,
        vPRA = vpra,

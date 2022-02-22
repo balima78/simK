@@ -47,5 +47,7 @@ This package has 3 main functions, with them we can generate simulated data for 
 A detailed description of these functions usage, is available from [here](https://simk.netlify.app/articles/simk.html).
 
 :warning: 
-All these functions rely on HLA typing at intermediate resolution as described at  [Lima *et al*, 2013](https://12f11c1f-960a-f627-594d-b8ce276384f7.filesusr.com/ugd/3e838e_dc548dede99a4db5869c3d2c20c2d16f.pdf?index=true).
+For PT origin, all these functions rely on HLA typing at intermediate resolution as described at [Lima *et al*, 2013](https://12f11c1f-960a-f627-594d-b8ce276384f7.filesusr.com/ugd/3e838e_dc548dede99a4db5869c3d2c20c2d16f.pdf?index=true).
+
 :warning:
+For NMDP populations, HLA typing were described by [Gragert *et al*, 2013](https://reader.elsevier.com/reader/sd/pii/S0198885913001821?token=885F05F0FAD857548C932A5CC40B6962CD7A9FC589A73FC6DECE56D6E4E247587E06D755C16D9F2EA425111289B5DC2F&originRegion=eu-west-1&originCreation=20220222173605)

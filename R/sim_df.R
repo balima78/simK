@@ -4,6 +4,7 @@
 #' demographic caracheristics.
 #' @param n An integer to define the number of rows
 #' @param replace A logical value for sampling with replacement
+#' @param origin A character value for population origin from options: 'PT', 'API', 'AFA', 'CAU' and 'HIS'
 #' @param probs A vector with the probabilities for blood group A, AB, B and O (in this order). The sum of the probabilities must be equal to one.
 #' @param lower An integer for ages' lower limit.
 #' @param upper An integer for ages' upper limit.
@@ -13,30 +14,30 @@
 #' @param n_seed a numeric seed that will be used for random number generation.
 #' @return A data frame with HLA typing, blood group and truncated ages for a simulated group of transplant donors.
 #' @examples
-#' donors_df(n = 10, replace = TRUE,
+#' donors_df(n = 10, replace = TRUE, origin = 'PT',
 #' probs = c(0.4658, 0.0343, 0.077, 0.4229),
 #' lower=18, upper=75, mean = 55, sd = 15,
 #' uk = FALSE, n_seed = 3)
 #' @export
 #' @concept generate_data
 donors_df <- function(n = 10, replace = TRUE,
+                      origin = 'PT',
                       probs = c(0.4658, 0.0343, 0.077, 0.4229),
                       lower=18, upper=75,
                       mean = 60, sd = 12,
                       uk = FALSE,
                       n_seed = 3){
 
-  require(magrittr)
+  require("magrittr", quietly = TRUE)
 
   set.seed(n_seed)
 
-  df <- hla_sample(n = n, replace = replace)
+  df <- hla_sample(n = n, replace = replace, origin = origin)
   df$bg <- abo(n = n, probs = probs)
   df$age <- ages(n = n, lower=lower, upper=upper, mean = mean, sd = sd)
   df$ID <- paste0('D', 1:n)
 
   df <- df %>%
-    dplyr::rename(DR1 = DRB11, DR2 = DRB12) %>%
     dplyr::select(ID, bg, A1, A2, B1, B2, DR1, DR2, age)
 
   if(uk == TRUE){
@@ -73,6 +74,7 @@ donors_df <- function(n = 10, replace = TRUE,
 #' demographic characteristics.
 #' @param n An integer to define the number of rows
 #' @param replace A logical value for sampling with replacement
+#' @param origin A character value for population origin from options: 'PT', 'API', 'AFA', 'CAU' and 'HIS'
 #' @param probs_abo A vector with the probabilities for blood group A, AB, B and O (in this order). The sum of the probabilities must be equal to one.
 #' @param probs_cpra A vector with the probabilities for cPRA groups 0%, 1%-50%, 51%-84%, 85%-100% (in this order). The sum of the probabilities must be equal to one.
 #' @param lower An integer for ages' lower limit.
@@ -84,7 +86,7 @@ donors_df <- function(n = 10, replace = TRUE,
 #' @param n_seed a numeric seed that will be used for random number generation.
 #' @return A data frame with HLA typing, blood group, truncated ages, time on dialysis (in months), cPRA, Tier, MS and RRI (those last 3, only when uk = TRUE) for a simulated group of transplant candidates.
 #' @examples
-#' candidates_df(n = 10, replace = TRUE,
+#' candidates_df(n = 10, replace = TRUE, origin = 'PT',
 #' probs_abo = c(0.43, 0.03, 0.08, 0.46), probs_cpra = c(0.7, 0.1, 0.1, 0.1),
 #' lower=18, upper=75, mean = 45, sd = 15,
 #' prob_dm = 0.12,
@@ -92,6 +94,7 @@ donors_df <- function(n = 10, replace = TRUE,
 #' @export
 #' @concept generate_data
 candidates_df <- function(n = 10, replace = TRUE,
+                          origin = 'PT',
                           probs_abo = c(0.43, 0.03, 0.08, 0.46),
                           probs_cpra = c(0.7, 0.1, 0.1, 0.1),
                           lower=18, upper=75,
@@ -100,18 +103,17 @@ candidates_df <- function(n = 10, replace = TRUE,
                           uk = FALSE,
                           n_seed = 3){
 
-  require(magrittr)
+  require("magrittr", quietly = TRUE)
 
   set.seed(n_seed)
 
-  df <- hla_sample(n = n, replace = replace)
+  df <- hla_sample(n = n, replace = replace, origin = origin)
   df$bg <- abo(n = n, probs = probs_abo)
   df$cPRA <- cpra(n = n, probs = probs_cpra)
   df$age <- ages(n = n, lower=lower, upper=upper, mean = mean, sd = sd)
   df$ID <- paste0('K', 1:n)
 
   df <- df %>%
-    dplyr::rename(DR1 = DRB11, DR2 = DRB12) %>%
     dplyr::select(ID, bg, A1, A2, B1, B2, DR1, DR2, age, cPRA) %>%
     dplyr::mutate(hiper = cPRA > 85,
                   dialysis = purrr::map2_dbl(.x = bg,
@@ -151,21 +153,23 @@ candidates_df <- function(n = 10, replace = TRUE,
 #' @description Returns a data frame with transplant candidates' HLA antibodies
 #' obtained according to theirs cPRA values and HLA typing.
 #' @param candidates A dataframe with \code{ID}, HLA typing (column names: \code{A1}, \code{A2}, \code{B1}, \code{B2}, \code{DR1}, \code{DR2}) and cPRA value (column name: \code{cPRA}), for a group of transplant candidates.
+#' @param origin A character value from options: 'API', 'AFA', 'CAU' and 'HIS'
 #' @param n_seed a numeric seed that will be used for random number generation.
 #' @return A data frame with \code{ID} and HLA antibodies \code{Abs}.
 #' @examples
-#' Abs_df(candidates = candidates_df(n=10), n_seed = 3)
+#' Abs_df(candidates = candidates_df(n=10), origin = 'PT', n_seed = 3)
 #' @export
 #' @concept generate_data
-Abs_df <- function(candidates = candidates_df(n=10), n_seed = 3){
+Abs_df <- function(candidates = candidates_df(n=10), origin = 'PT', n_seed = 3){
 
-  require("magrittr")
+  require("magrittr", quietly = TRUE)
 
   df <- candidates %>%
     dplyr::rowwise() %>%
     dplyr::mutate(abs = list(antbs(cA = c(A1,A2), cB = c(B1,B2), cDR = c(DR1,DR2),
-                                    cPRA = cPRA,
-                                    n_seed = n_seed)$Abs)) %>%
+                                   cPRA = cPRA,
+                                   origin = origin,
+                                   n_seed = n_seed)$Abs)) %>%
     dplyr::ungroup()
 
   df %>%

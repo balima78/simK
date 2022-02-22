@@ -1,19 +1,71 @@
+#' A data frame with HLA haplotypes
+#'
+#' @description Returns a data frame with HLA-A, -B and -DRB1 haplotypes from MNDP by race and sampled by their frequencies
+#' @param n An integer to define the number of rows
+#' @param replace A logical value for sampling with replacement
+#' @param origin A character value from options: 'API', 'AFA', 'CAU' and 'HIS'
+#' @return A data frame
+#' @examples
+#' hla_sample_mndp(n = 1000, replace = TRUE, origin = 'CAU')
+#' @export
+#' @concept clinical_parameters
+hla_sample_mndp <- function(n, replace, origin){
+  if(origin == 'CAU') {
+    df <- MNDPhaps[MNDPhaps$cau > 0, ]
+    df <- df[sample(seq_len(nrow(df)), size = n, replace = replace, prob = df$cau),]
+  }
+  if(origin == 'API') {
+    df <- MNDPhaps[MNDPhaps$api > 0, ]
+    df <- df[sample(seq_len(nrow(df)), size = n, replace = replace, prob = df$api),]
+  }
+  if(origin == 'AFA') {
+    df <- MNDPhaps[MNDPhaps$afa > 0, ]
+    df <- df[sample(seq_len(nrow(df)), size = n, replace = replace, prob = df$afa),]
+  }
+  if(origin == 'HIS') {
+    df <- MNDPhaps[MNDPhaps$his > 0, ]
+    df <- df[sample(seq_len(nrow(df)), size = n, replace = replace, prob = df$his),]
+  }
+
+  return(df)
+}
+
 #' A data frame with HLA typing
 #'
 #' @description Returns a data frame with HLA-A, -B, -C and -DRB1 typing
 #' @param n An integer to define the number of rows
 #' @param replace A logical value for sampling with replacement
+#' @param origin A character value from options: 'PT', 'API', 'AFA', 'CAU' and 'HIS'
 #' @return A data frame
 #' @examples
-#' hla_sample(n = 1000, replace = TRUE)
+#' hla_sample(n = 1000, replace = TRUE, origin = 'PT')
 #' @export
 #' @concept clinical_parameters
-hla_sample <- function(n, replace){
+hla_sample <- function(n, replace, origin){
+
+  require("magrittr", quietly = TRUE)
 
   if(!is.numeric(n)){stop("`n` must be a single number!")}
   if(!is.logical(replace)){stop("`replace` must be logical (TRUE or FALSE)")}
+  if(!origin %in% c('PT', 'API', 'AFA', 'CAU', 'HIS')){stop("`origin` is no valid!")}
 
-  df <- dplyr::slice_sample(hla, n = n, replace = replace)
+  if(origin == 'PT') {
+    df <- dplyr::slice_sample(hla, n = n, replace = replace)
+    df <- df %>%
+      dplyr::rename(DR1 = DRB11, DR2 = DRB12) %>%
+      dplyr::select(A1, A2, B1, B2, DR1, DR2)
+  }
+  if(origin != 'PT') {
+    df <- hla_sample_mndp(n = 2*n, replace = replace, origin = origin)
+    df1 <- df %>%
+      dplyr::slice(1:n) %>%
+      dplyr::rename(A1 = A, B1 = B, DR1 = DR)
+    df2 <- df %>%
+      dplyr::slice((n+1):(2*n)) %>%
+      dplyr::rename(A2 = A, B2 = B, DR2 = DR)
+    df <- bind_cols(df1, df2) %>%
+      dplyr::select(A1, A2, B1, B2, DR1, DR2)
+    }
 
   return(df)
 }

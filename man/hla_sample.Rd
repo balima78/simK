@@ -4,12 +4,14 @@
 \alias{hla_sample}
 \title{A data frame with HLA typing}
 \usage{
-hla_sample(n, replace)
+hla_sample(n, replace, origin)
 }
 \arguments{
 \item{n}{An integer to define the number of rows}
 
 \item{replace}{A logical value for sampling with replacement}
+
+\item{origin}{A character value from options: 'PT', 'API', 'AFA', 'CAU' and 'HIS'}
 }
 \value{
 A data frame
@@ -18,6 +20,6 @@ A data frame
 Returns a data frame with HLA-A, -B, -C and -DRB1 typing
 }
 \examples{
-hla_sample(n = 1000, replace = TRUE)
+hla_sample(n = 1000, replace = TRUE, origin = 'PT')
 }
 \concept{clinical_parameters}

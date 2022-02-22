@@ -7,6 +7,7 @@
 candidates_df(
   n = 10,
   replace = TRUE,
+  origin = "PT",
   probs_abo = c(0.43, 0.03, 0.08, 0.46),
   probs_cpra = c(0.7, 0.1, 0.1, 0.1),
   lower = 18,
@@ -22,6 +23,8 @@ candidates_df(
 \item{n}{An integer to define the number of rows}
 
 \item{replace}{A logical value for sampling with replacement}
+
+\item{origin}{A character value for population origin from options: 'PT', 'API', 'AFA', 'CAU' and 'HIS'}
 
 \item{probs_abo}{A vector with the probabilities for blood group A, AB, B and O (in this order). The sum of the probabilities must be equal to one.}
 
@@ -49,7 +52,7 @@ Returns a data frame for simulated donors clinical and
 demographic characteristics.
 }
 \examples{
-candidates_df(n = 10, replace = TRUE,
+candidates_df(n = 10, replace = TRUE, origin = 'PT',
 probs_abo = c(0.43, 0.03, 0.08, 0.46), probs_cpra = c(0.7, 0.1, 0.1, 0.1),
 lower=18, upper=75, mean = 45, sd = 15,
 prob_dm = 0.12,

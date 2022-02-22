@@ -33,6 +33,8 @@ usethis::use_pkgdown()
 pkgdown::build_site()
 usethis::use_pkgdown_github_pages()
 
+usethis::use_vignette("started", title = "Get started")
+
 # https://rich-iannone.github.io/pointblank/articles/VALID-III.html
 
 set.seed(3)
@@ -100,3 +102,36 @@ candidates_df(n = 10,
 Abs_df(candidates = candidates_df(n=10),
        n_seed = 3)
 
+
+####
+freqs <- read_csv2("data/em_freqsNMDPhaplotypes.csv")
+
+MNDPhaps <- freqs %>%
+  group_by(A, B, DR) %>%
+  summarise(api = sum(API),
+            afa = sum(AFA),
+            cau = sum(CAU),
+            his = sum(HIS)) %>%
+  ungroup()
+
+
+usethis::use_data(agDR_MNDP)
+
+candidates_df(n = 10,
+              replace = TRUE,
+              origin = 'PT',
+              probs_abo = c(0.43, 0.03, 0.08, 0.46),
+              probs_cpra = c(0.7, 0.1, 0.1, 0.1),
+              lower = 18, upper = 75, mean = 45, sd = 15,
+              prob_dm = 0.12,
+              uk = TRUE,
+              n_seed = 3)
+
+vpra(abs = c('A1','A2','B5','DR4'), donors = D10K_HIS)
+
+antbs(cA = c('2','29'), cB = c('7','15'), cDR = c('4','7'),
+      cPRA = 85, origin = 'PT', n_seed = 3)
+
+Abs_df(candidates = candidates_df(n=10), origin = 'PT', n_seed = 3)
+
+D10K

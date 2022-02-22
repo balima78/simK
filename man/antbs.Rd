@@ -9,6 +9,7 @@ antbs(
   cB = c("7", "15"),
   cDR = c("4", "7"),
   cPRA = 85,
+  origin = "PT",
   n_seed = 3
 )
 }
@@ -21,6 +22,8 @@ antbs(
 
 \item{cPRA}{candidate's cPRA value}
 
+\item{origin}{A character value from options: 'API', 'AFA', 'CAU' and 'HIS'}
+
 \item{n_seed}{a numeric seed that will be used for random number generation.}
 }
 \value{
@@ -31,6 +34,7 @@ creates a sample of HLA antibodies (abs) for a given candidate
 according with a cPRA value.
 }
 \examples{
-antbs(cA = c('2','29'), cB = c('7','15'), cDR = c('4','7'), cPRA = 85, n_seed = 3)
+antbs(cA = c('2','29'), cB = c('7','15'), cDR = c('4','7'),
+cPRA = 85, origin = 'PT', n_seed = 3)
 }
 \concept{histocompatibility}
