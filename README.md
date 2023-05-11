@@ -3,9 +3,14 @@
 
 # simK <img src="man/figures/logo.png" height="150" align="right"/>
 
-[![Project Status: Active – The project has reached a st able, usable
-state and is being actively
-developed.](https://www.repostatus.org/badges/latest/active.svg)](https://www.repostatus.org/#active)
+:warning: :warning: :warning: :warning: :warning: :warning: :warning:
+
+**this package version is deprecated**
+
+please find the new versions here:
+<https://txopen.github.io/simK/index.html>
+
+:warning: :warning: :warning: :warning: :warning: :warning: :warning:
 
 **License**: Creative Commons Attribution
 [CC-BY](https://creativecommons.org/licenses/by/2.0/). Feel free to

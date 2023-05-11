@@ -12,7 +12,7 @@ URL: https://github.com/balima78/simK, https://txor.netlify.app/
 BugReports: https://github.com/balima78/simK/issues
 Encoding: UTF-8
 Roxygen: list(markdown = TRUE)
-RoxygenNote: 7.1.2
+RoxygenNote: 7.2.0
 Depends: 
     R (>= 3.10)
 LazyData: true
